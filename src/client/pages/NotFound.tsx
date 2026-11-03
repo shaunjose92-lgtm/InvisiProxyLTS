@@ -64,7 +64,7 @@ export function Head() {
 			<base href={route('/')} />
 			<title>
 				{titled(
-					`InvisiProxy LTS | ${translate('error.pageTitle')}`,
+					`Cipher Browser | ${translate('error.pageTitle')}`,
 					translate('error.pageTitle')
 				)}
 			</title>

@@ -6,7 +6,7 @@ export default function Header() {
 	const overview = route(values.usingSEO ? '/' : '/overview');
 	return (
 		<>
-			<div class="brand-logo-container">
+			<div class="brand-logo-container cipher-top-brand">
 				<div
 					class="logo"
 					role="img"
@@ -14,11 +14,11 @@ export default function Header() {
 				></div>
 				<a
 					href={route('/')}
-					class="brand pulse"
+					class="brand cipher-wordmark"
 					title={translate('header.homeTitle')}
 				>
 					{' '}
-					InvisiProxy v8.3.x{' '}
+					Cipher Browser{' '}
 				</a>
 			</div>
 			<div class="navbar-group">

@@ -141,7 +141,7 @@ export function Head() {
 		<>
 			<title>
 				{titled(
-					`InvisiProxy LTS | ${translate('credits.title')}`,
+					`Cipher Browser | ${translate('credits.title')}`,
 					translate('header.credits.label')
 				)}
 			</title>

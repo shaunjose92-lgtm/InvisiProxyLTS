@@ -15,11 +15,29 @@ function header(headers: RawHeaders, name: string): string | null {
 	return null;
 }
 
+export interface CacheResponseMeta {
+  method?: string;
+  status?: number;
+}
+
+// Do not let a generic HTTP cache reuse sign-in responses or website state.
+// These requests change in response to cookies, CSRF tokens and user sessions.
+// This is compatibility and privacy hardening, not an attempt to bypass a
+// website's identity checks or its decision to reject a login.
 export function skipHttpCache(
-	destination: string,
-	requestHeaders: RawHeaders,
-	responseHeaders: RawHeaders
+  destination: string,
+  requestHeaders: RawHeaders,
+  responseHeaders: RawHeaders,
+  meta: CacheResponseMeta = {}
 ): boolean {
+  if (meta.method && !['GET', 'HEAD'].includes(meta.method.toUpperCase())) return true;
+  if (meta.status !== undefined && meta.status !== 200) return true;
+  if (['', 'document', 'iframe', 'fetch', 'xhr'].includes(destination)) return true;
+  if (header(requestHeaders, 'authorization') !== null || header(requestHeaders, 'cookie') !== null) return true;
+  if (header(responseHeaders, 'set-cookie') !== null) return true;
+  const cacheControl = header(responseHeaders, 'cache-control') ?? '';
+  if (/(?:^|,)\s*(?:private|no-cache|no-store)(?:\s*(?:,|$|=))/i.test(cacheControl)) return true;
+  if (/(?:^|,)\s*(?:cookie|authorization|\*)(?:\s*(?:,|$))/i.test(header(responseHeaders, 'vary') ?? '')) return true;
 	if (mediaDestinations.includes(destination)) return true;
 	if (header(requestHeaders, 'range') !== null) return true;
 	if (mediaType.test(header(responseHeaders, 'content-type') ?? ''))

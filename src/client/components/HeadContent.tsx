@@ -11,7 +11,7 @@ export default function HeadContent() {
 			<meta
 				name="theme-color"
 				media="(prefers-color-scheme: dark)"
-				content="#434c5e"
+				content="#29271f"
 			/>
 			<link
 				rel="apple-touch-icon"

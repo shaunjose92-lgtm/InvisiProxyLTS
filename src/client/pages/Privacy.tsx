@@ -44,7 +44,7 @@ export function Head() {
 	return (
 		<>
 			<title>
-				{titled('InvisiProxy LTS', translate('header.privacy.label'))}
+				{titled('Cipher Browser', translate('header.privacy.label'))}
 			</title>
 			<PageDescription />
 			<HeadContent />

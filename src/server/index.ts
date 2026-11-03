@@ -5,6 +5,7 @@ import { entryPointFile } from '../constants.ts';
 import type { Relay } from 'dlpcc';
 import { startDlpcc, withDlpcc } from './dlpcc.ts';
 import { createSiteHandler } from './handler.ts';
+import { createCipherGate } from './cipher-gate.ts';
 import {
 	fromOwnSite,
 	wispPath,
@@ -39,14 +40,22 @@ const wisps = new Map<string, SupervisedWisp>([
 ]);
 
 let relay: Relay | null = null;
-const server = createServer(withDlpcc(() => relay, createSiteHandler())).on(
+const cipherGate = createCipherGate();
+const guardedHandler = (req: import('node:http').IncomingMessage, res: import('node:http').ServerResponse) =>
+  cipherGate.serve(req, res, () => createSiteHandlerCached(req, res));
+const siteHandler = createSiteHandler();
+const createSiteHandlerCached = (req: import('node:http').IncomingMessage, res: import('node:http').ServerResponse) => siteHandler(req, res);
+const server = createServer(withDlpcc(() => relay, guardedHandler)).on(
 	'upgrade',
 	(req, socket, head) => {
 		const region = wispRegion(req.url);
 		if (socket instanceof Socket && region !== null && fromOwnSite(req)) {
-			req.url = wispPath();
-			wisps.get(region)?.route(req, socket, head);
-		} else socket.destroy();
+      void cipherGate.check(req).then(ok => {
+        if (!ok || socket.destroyed) return socket.destroy();
+        req.url = wispPath();
+        wisps.get(region)?.route(req, socket, head);
+      }).catch(() => socket.destroy());
+    } else socket.destroy();
 	}
 );
 

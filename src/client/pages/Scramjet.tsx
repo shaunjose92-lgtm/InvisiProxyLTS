@@ -45,12 +45,11 @@ export default function Scramjet() {
 			<div data-aos="fade-right" class="hero-grid-container">
 				<div class="box-hero">
 					<div class="hero-content browse-hero">
-						<div class="browse-brand">
-							<img
-								class="browse-logo"
-								src={route('/assets/img/logo_brand.webp')}
-								alt=""
-							/>
+						<div class="browse-brand cipher-browse-brand">
+							<div class="cipher-browse-eyebrow"><span class="cipher-online-dot"></span> CIPHER / BROWSER</div>
+							<div class="cipher-browse-symbol">C</div>
+							<h1 class="cipher-browse-heading">Your next tab starts here.</h1>
+							<p class="cipher-browse-description">Search, explore and pick up where you left off. The web, in Cipher.</p>
 						</div>
 						<div class="proxy-form text-center">
 							<div id="pr-sj" class="pr-form">
@@ -99,12 +98,14 @@ export default function Scramjet() {
 									{translate('scramjet.search')}
 								</button>
 							</div>
+							<div class="cipher-quicklinks-label">QUICK ACCESS <span>·</span> POPULAR DESTINATIONS</div>
 							<div class="glist browse-presets">
 								{sites.map((site) => (
 									<App url={site.url} name={site.name} />
 								))}
 							</div>
-							<ProxySettings />
+							<div class="cipher-proxy-pref"><ProxySettings /></div>
+							<p class="cipher-browser-reminder">Some websites, social-media sign-ins and Google authentication may not work through a proxy. Browser settings and site data are stored on this device.</p>
 						</div>
 					</div>
 				</div>
@@ -126,7 +127,7 @@ export function Head() {
 		<>
 			<title>
 				{titled(
-					`InvisiProxy LTS | ${translate('scramjet.pageTitle')}`,
+					`Cipher Browser | ${translate('scramjet.pageTitle')}`,
 					translate('header.browse.label')
 				)}
 			</title>

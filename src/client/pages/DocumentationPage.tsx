@@ -99,7 +99,7 @@ export function Head() {
 					name="description"
 					content={translate('docs.meta.description')}
 				/>
-				<meta property="og:site_name" content="InvisiProxy LTS" />
+				<meta property="og:site_name" content="Cipher Browser" />
 				<meta
 					property="og:title"
 					content={translate('docs.meta.title')}

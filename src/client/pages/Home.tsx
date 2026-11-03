@@ -7,10 +7,8 @@ import {
 	SEO,
 	translate,
 	Translation,
-	languageTag,
 	titled,
 } from '../document-helpers.tsx';
-import { Show } from 'solid-js';
 import {
 	AosScripts,
 	ParticlesScript,
@@ -98,70 +96,9 @@ export default function Home() {
 						</a>
 					</div>
 					<Keywords />
-					<section
-						class="mac-window"
-						aria-label="Command Line Instructions"
-					>
-						<div class="mac-title-bar">
-							<div class="mac-buttons">
-								<span class="mac-close"></span>
-								<span class="mac-minimize"></span>
-								<span class="mac-maximize"></span>
-							</div>
-						</div>
-						<div class="mac-content">
-							<p>
-								<span class="cmd">
-									{'git clone --recurse-submodules'}
-									<span class="url">
-										{' '}
-										https://github.com/InvisiProxy/InvisiProxyLTS.git
-									</span>
-								</span>
-								<br />
-								<span class="cmd">
-									{'cd '}
-									InvisiProxyLTS{' '}
-								</span>
-								<br />
-								<span class="comment">
-									{translate('home.terminal.setup')}
-								</span>
-								<br />
-								<span class="cmd">
-									{'pnpm run fresh-start\r'}
-								</span>
-								<br />
-								<span class="comment">
-									{translate('home.terminal.start')}
-								</span>
-								<br />
-								<span class="cmd">{'pnpm start\r'}</span>
-								<br />
-								<span class="comment">
-									{translate('home.terminal.dev')}
-								</span>
-								<br />
-								<span class="cmd">{'pnpm dev\r'}</span>
-								<br />
-								<br />
-								<span class="comment">
-									InvisiProxy LTS
-									{` v${values.version} // master`}
-								</span>
-								<br />
-								<span class="comment">Node.js v26.x</span>
-								<br />
-								<span class="comment">Solid JS v1.9.17</span>
-								<br />
-								<br />
-								<span class="downarrowgroup">
-									<i class="fas fa-level-down-alt"></i>
-									<i class="fas fa-level-down-alt"></i>
-									<i class="fas fa-level-down-alt"></i>
-								</span>
-							</p>
-						</div>
+					<section class="cipher-home-preview" aria-label="Cipher Browser at a glance">
+						<div class="cipher-home-preview-top"><span class="cipher-home-dot"></span><span class="cipher-home-preview-name">CIPHER BROWSER / START</span><span class="cipher-home-preview-state">ONLINE</span></div>
+						<div class="cipher-home-preview-core"><div class="cipher-home-preview-mark">C</div><p>Everything you need, one browser.</p><span>Tabs, bookmarks, transport controls, privacy settings and quick access to your favourite sites.</span><a href={route('/browsing')}>Open Cipher Browser <i class="fas fa-arrow-right" aria-hidden="true"></i></a></div>
 					</section>
 				</section>
 				<Keywords />
@@ -203,7 +140,7 @@ export default function Home() {
 								src={route('/assets/img/logo-light.webp')}
 								alt={translate('home.logoAlt')}
 							/>
-							<h1>InvisiProxy LTS</h1>
+							<h1>Cipher Browser</h1>
 							<h2>{translate('home.heroSubtitle')}</h2>
 							<a
 								class="fancybutton glowbutton"
@@ -575,7 +512,7 @@ export function Head() {
 					content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
 				/>
 				<meta name="author" content="QuiteAFancyEmerald" />
-				<meta name="application-name" content="InvisiProxy LTS" />
+				<meta name="application-name" content="Cipher Browser" />
 			</SEO>
 			<title>
 				{titled(
@@ -592,7 +529,7 @@ export function Head() {
 					name="Keywordss"
 					content="web proxy, free web proxy, proxy web browser, proxy web, proxy web page, proxy for web, secure proxy, unblock websites, free proxy, bypass censorship, unblock Chromebook, proxy service, online security, private browsing, unblock social media, access blocked content, proxy server, internet freedom, unblock at school, unblock at work"
 				/>
-				<meta property="og:site_name" content="InvisiProxy LTS" />
+				<meta property="og:site_name" content="Cipher Browser" />
 				<meta property="og:title" content={translate('home.title')} />
 				<meta property="og:type" content="website" />
 				<meta
@@ -640,7 +577,7 @@ export function Head() {
 			<SEO>
 				<meta
 					name="apple-mobile-web-app-title"
-					content="InvisiProxy LTS"
+					content="Cipher Browser"
 				/>
 			</SEO>
 			<HeadContent />
@@ -655,23 +592,7 @@ export function Head() {
 			<link rel="manifest" href={route('manifest.json')} />
 			<meta name="mobile-web-app-capable" content="yes" />
 			<SEO>
-				<script
-					type="application/ld+json"
-					innerHTML={
-						'\n      {\n        "@context": "https://schema.org",\n        "@graph": [\n          {\n            "@type": "WebSite",\n            "@id": "https://invisiproxy.com/#website",\n            "url": "https://invisiproxy.com/",\n            "name": "InvisiProxy LTS",\n            "alternateName": [\n              "InvisiProxy",\n              "InvisiProxy LTS Web Proxy"\n            ],\n            "description": "InvisiProxy LTS is a free, open-source web proxy for bypassing web filters and network censorship, with built-in Tor routing and self-hosting support.",\n            "inLanguage": "' +
-						languageTag(values.locale) +
-						'",\n            "publisher": {\n              "@id": "https://invisiproxy.com/#organization"\n            }\n          },\n          {\n            "@type": "Organization",\n            "@id": "https://invisiproxy.com/#organization",\n            "name": "InvisiProxy LTS",\n            "alternateName": "InvisiProxy",\n            "url": "https://invisiproxy.com/",\n            "logo": {\n              "@type": "ImageObject",\n              "@id": "https://invisiproxy.com/#logo",\n              "url": "https://invisiproxy.com/assets/img/logo_github.png",\n              "contentUrl": "https://invisiproxy.com/assets/img/logo_github.png",\n              "width": 878,\n              "height": 1262,\n              "caption": "InvisiProxy LTS"\n            },\n            "image": {\n              "@id": "https://invisiproxy.com/#logo"\n            },\n            "description": "InvisiProxy LTS is an open-source web proxy project that helps people bypass web filters and regional censorship while keeping their browsing private.",\n            "email": "8xz62b0ce@mozmail.com",\n            "foundingDate": "2020",\n            "founder": {\n              "@type": "Person",\n              "name": "Quite A Fancy Emerald",\n              "url": "https://github.com/QuiteAFancyEmerald"\n            },\n            "contactPoint": {\n              "@type": "ContactPoint",\n              "contactType": "customer support",\n              "email": "8xz62b0ce@mozmail.com",\n              "url": "https://invisiproxy.com/credits",\n              "availableLanguage": [\n                "English"\n              ]\n            },\n            "sameAs": [\n              "https://github.com/InvisiProxy/InvisiProxyLTS",\n              "https://www.patreon.com/invisiproxy"\n            ]\n          }\n        ]\n      }\n    '
-					}
-				/>
-				{/* These answers are only written in English. */}
-				<Show when={values.locale === 'en'}>
-					<script
-						type="application/ld+json"
-						innerHTML={
-							'\n      {\n        "@context": "https://schema.org",\n        "@type": "FAQPage",\n        "@id": "https://invisiproxy.com/#faq",\n        "url": "https://invisiproxy.com/",\n        "name": "InvisiProxy LTS frequently asked questions",\n        "inLanguage": "en-US",\n        "isPartOf": {\n          "@id": "https://invisiproxy.com/#website"\n        },\n        "about": {\n          "@id": "https://invisiproxy.com/#organization"\n        },\n        "mainEntity": [\n          {\n            "@type": "Question",\n            "name": "What is InvisiProxy LTS?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "InvisiProxy LTS is a free, open-source web proxy that lets you reach websites blocked by school, workplace, or regional filters. It runs entirely in your browser using Scramjet and Wisp, so there is nothing to install."\n            }\n          },\n          {\n            "@type": "Question",\n            "name": "How do I start using InvisiProxy LTS?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "Open the Browse page, pick one of the featured proxies, and type the address of the site you want to visit into the search box. Scramjet is the recommended option for the best site compatibility and speed."\n            }\n          },\n          {\n            "@type": "Question",\n            "name": "How do I unblock websites at school or work?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "Visit InvisiProxy LTS and browse through the built-in proxy. If the domain you use gets blocked, use the link button on most pages to get a fresh InvisiProxy LTS link from another device."\n            }\n          },\n          {\n            "@type": "Question",\n            "name": "What websites can I access with InvisiProxy LTS?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "Most of the web works, including Discord, Spotify, YouTube, and many browser game sites. The Apps page also links pre-configured apps such as YouTube, Spotify, Webretro (a multi-console emulator), and Ruffle (a Flash emulator)."\n            }\n          },\n          {\n            "@type": "Question",\n            "name": "Is InvisiProxy LTS safe to use?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "Yes. InvisiProxy LTS does not collect or log user data, as described in the Privacy Policy, and its full source code is public on GitHub so anyone can verify how it works."\n            }\n          },\n          {\n            "@type": "Question",\n            "name": "Does InvisiProxy LTS hide my browsing history?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "Sites you open through the proxy do not appear as regular entries in your browser history. You can also disguise the tab title and icon under Settings > Tab Cloak and use Stealth mode for more private browsing."\n            }\n          },\n          {\n            "@type": "Question",\n            "name": "Can I use Tor with InvisiProxy LTS?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "Yes. InvisiProxy LTS can route traffic over the Tor network from inside Chromium-based browsers and Firefox, so you can open .onion sites without installing the Tor Browser. You can also chain traffic through your own SOCKS5 proxy. For the strongest anonymity, the official Tor Browser still offers better fingerprinting protection."\n            }\n          },\n          {\n            "@type": "Question",\n            "name": "What makes InvisiProxy LTS different from other web proxies?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "InvisiProxy LTS is fully open source, collects no user data, and builds on actively maintained projects like Scramjet, Wisp, and Proxy Transports. It adds source randomization, leak prevention, CAPTCHA support, Tor routing, and configurable blocklists to get past web and network filters."\n            }\n          },\n          {\n            "@type": "Question",\n            "name": "Can I self-host InvisiProxy LTS?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "Yes. Fork or clone the repository on GitHub and run it on your own server, VPS, or Docker host. Self-hosting gives you full control over privacy and a private link that is less likely to be blocked. Setup guides are in the GitHub repository and the built-in Documentation page."\n            }\n          },\n          {\n            "@type": "Question",\n            "name": "What port does a self-hosted InvisiProxy LTS instance use?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "By default a self-hosted instance runs at http://localhost:8080. You can change the port in config.json."\n            }\n          },\n          {\n            "@type": "Question",\n            "name": "How can I contribute to InvisiProxy LTS?",\n            "acceptedAnswer": {\n              "@type": "Answer",\n              "text": "Contributions are welcome in design, core development, apps, documentation, translations, and testing. Start with the GitHub repository and join the Discord community to coordinate with the maintainers."\n            }\n          }\n        ]\n      }\n    '
-						}
-					/>
-				</Show>
+				<meta name="description" content="Cipher Browser is a Cipher-branded web proxy based on the open-source InvisiProxy LTS project. Some sign-ins and websites may not function through a proxy." />
 			</SEO>
 		</>
 	);

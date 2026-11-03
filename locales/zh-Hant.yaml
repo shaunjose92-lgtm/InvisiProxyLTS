@@ -13,8 +13,8 @@ language:
   # Words masked to avoid filters. Proper nouns stay as-is; common words are
   # listed in the form they appear in this translation.
   maskedTerms:
-    - InvisiProxy
-    - InvisiProxy LTS
+    - Cipher Browser
+    - Cipher Browser
     - Holy Unblocker
     - Holy Unblocker LTS
     - Webretro
@@ -72,39 +72,39 @@ language:
     - Rammerhead
 
 home:
-  title: InvisiProxy LTS | 免費網頁代理 - 繞過過濾並訪問被封鎖的網站
+  title: Cipher Browser | 免費網頁代理 - 繞過過濾並訪問被封鎖的網站
   description: >-
-    InvisiProxy LTS 是一款前沿的網頁代理服務，專為繞過網頁過濾器和攔截器而設計。無論是客戶端還是基於網路的審查，InvisiProxy LTS 都能讓你在 Chromebook 等裝置上無縫訪問被封鎖的網站，並進行安全、私密的瀏覽。藉助我們先進的代理方案，輕鬆突破內容攔截器、Chrome 擴充套件、防火牆等限制。
+    Cipher Browser 是一款前沿的網頁代理服務，專為繞過網頁過濾器和攔截器而設計。無論是客戶端還是基於網路的審查，Cipher Browser 都能讓你在 Chromebook 等裝置上無縫訪問被封鎖的網站，並進行安全、私密的瀏覽。藉助我們先進的代理方案，輕鬆突破內容攔截器、Chrome 擴充套件、防火牆等限制。
   ogDescription: >-
-    InvisiProxy LTS 是一款頂級網頁代理服務，可繞過網路和瀏覽器限制，安全訪問被封鎖的網站。享受安全可靠、功能先進的無縫瀏覽體驗。
+    Cipher Browser 是一款頂級網頁代理服務，可繞過網路和瀏覽器限制，安全訪問被封鎖的網站。享受安全可靠、功能先進的無縫瀏覽體驗。
   twitterDescription: >-
-    瞭解 InvisiProxy LTS——一款出色的網頁代理服務，可繞過審查和過濾，安全訪問被封鎖的網站。非常適合私密瀏覽，以及在 Chromebook 等裝置上突破網路限制。
+    瞭解 Cipher Browser——一款出色的網頁代理服務，可繞過審查和過濾，安全訪問被封鎖的網站。非常適合私密瀏覽，以及在 Chromebook 等裝置上突破網路限制。
 
   headline: 終結網路審查。
   tagline: 隱私，觸手可及。
   browseNow: 立即瀏覽
   bypassNow: 立即繞過
   donate: 捐贈
-  logoAlt: InvisiProxy 主視覺標誌
+  logoAlt: Cipher Browser 主視覺標誌
   terminal:
     setup: 在生產分支上首次部署時……
     start: 或日常使用……
     dev: 用於開發……
 
   free:
-    title: InvisiProxy 是免費的。
+    title: Cipher Browser 是免費的。
     body: >-
-      作為開源專案，你可以輕鬆 fork 本儲存庫並自行託管，以獲得最大的隱私控制權。與眾多其他網頁代理服務不同，InvisiProxy 擁有基於 TLS 的端到端加密、瀏覽歷史隔離、在 Chromium 瀏覽器中的 Tor/Onion 路由、完全透明以及隱私控制。<strong>與其他代理服務不同，我們的官方實例不收集任何使用者資料，即使是出於除錯目的也不會。</strong><br/>我們使用的開源依賴（Wisp、Libcurl 和 Epoxy）以安全和隱私為核心設計，即使面對惡意的自託管實例，也能確保你的瀏覽內容保持機密。
+      作為開源專案，你可以輕鬆 fork 本儲存庫並自行託管，以獲得最大的隱私控制權。與眾多其他網頁代理服務不同，Cipher Browser 擁有基於 TLS 的端到端加密、瀏覽歷史隔離、在 Chromium 瀏覽器中的 Tor/Onion 路由、完全透明以及隱私控制。<strong>與其他代理服務不同，我們的官方實例不收集任何使用者資料，即使是出於除錯目的也不會。</strong><br/>我們使用的開源依賴（Wisp、Libcurl 和 Epoxy）以安全和隱私為核心設計，即使面對惡意的自託管實例，也能確保你的瀏覽內容保持機密。
 
   fast:
-    title: InvisiProxy 快速且高度先進。
+    title: Cipher Browser 快速且高度先進。
     body: >-
-      InvisiProxy 提供卓越的網頁代理效能。它擁有強大的功能集，包括 reCAPTCHA/Botguard 支援、Tor 網路、SOCKS5 代理鏈、可自訂的黑名單設定、防洩漏、隱藏歷史記錄設定，以及透過 Scramjet + Wisp（搭配 Libcurl Transport）實現的廣泛網站相容性。CroxyProxy 或 Proxium 等其他熱門服務往往只完成了一半的資源重寫工作，會洩漏請求，還存在隱私隱患。本專案還支援代理鏈等功能，讓你的流量經過多個代理轉發，進一步提升安全性和匿名性。
+      Cipher Browser 提供卓越的網頁代理效能。它擁有強大的功能集，包括 reCAPTCHA/Botguard 支援、Tor 網路、SOCKS5 代理鏈、可自訂的黑名單設定、防洩漏、隱藏歷史記錄設定，以及透過 Scramjet + Wisp（搭配 Libcurl Transport）實現的廣泛網站相容性。CroxyProxy 或 Proxium 等其他熱門服務往往只完成了一半的資源重寫工作，會洩漏請求，還存在隱私隱患。本專案還支援代理鏈等功能，讓你的流量經過多個代理轉發，進一步提升安全性和匿名性。
 
   practical:
-    title: InvisiProxy 很實用。
+    title: Cipher Browser 很實用。
     body: >-
-      藉助我們的原始碼隨機化，以及 Proxy Transports、Wisp 和 Scramjet 等專案，本專案可提供無縫體驗，繞過網頁、政府和網路層面的過濾。本專案可對抗中國（GFW——防火長城）、俄羅斯等地使用的過濾器，<strong>無需下載任何軟體</strong>。這一切完全透過瀏覽器中的網站和我們的後端（自託管時則是你自己的後端）實現，讓使用者即使面對最嚴厲的審查封鎖也能繞過。無需下載任何東西，只需輸入 InvisiProxy 的域名即可；若被封鎖，可前往 InvisiProxy 官方網站獲取鏡像，然後匿名瀏覽。
+      藉助我們的原始碼隨機化，以及 Proxy Transports、Wisp 和 Scramjet 等專案，本專案可提供無縫體驗，繞過網頁、政府和網路層面的過濾。本專案可對抗中國（GFW——防火長城）、俄羅斯等地使用的過濾器，<strong>無需下載任何軟體</strong>。這一切完全透過瀏覽器中的網站和我們的後端（自託管時則是你自己的後端）實現，讓使用者即使面對最嚴厲的審查封鎖也能繞過。無需下載任何東西，只需輸入 Cipher Browser 的域名即可；若被封鎖，可前往 Cipher Browser 官方網站獲取鏡像，然後匿名瀏覽。
 
   heroSubtitle: 免費且透明，放心使用
   designedWithPrivacy: 以隱私為核心設計<underline/>。
@@ -112,7 +112,7 @@ home:
   overview:
     title: 概述
     body: >-
-      InvisiProxy LTS 是一項實驗性的網頁代理服務，無論審查方式是客戶端還是基於網路，都可以繞過網頁過濾器或"攔截器"。這包括繞過各國政府設定的內容封鎖（中國/GFW、俄羅斯等）、Chrome 擴充套件、本地客戶端防火牆以及與網路相關的過濾器。
+      Cipher Browser 是一項實驗性的網頁代理服務，無論審查方式是客戶端還是基於網路，都可以繞過網頁過濾器或"攔截器"。這包括繞過各國政府設定的內容封鎖（中國/GFW、俄羅斯等）、Chrome 擴充套件、本地客戶端防火牆以及與網路相關的過濾器。
     donate: >-
       請考慮為本專案捐贈，幫助我們保持免費！我們為支持者提供每月更多域名、Beta 測試資格、個人專屬域名以及功能請求優先處理。<br/>你可以<patreon>在 Patreon 上捐贈</patreon>。
     patreonLabel: 在 Patreon 上捐贈
@@ -135,31 +135,31 @@ home:
   apps:
     title: 應用
     body: >-
-      InvisiProxy 提供一系列預先連結好的應用，包括 YouTube、Spotify、GeForce NOW、Discord、ChatGPT、Gemini 等！
+      Cipher Browser 提供一系列預先連結好的應用，包括 YouTube、Spotify、GeForce NOW、Discord、ChatGPT、Gemini 等！
     imageAlt: 應用圖示
 
   hosting:
     title: 託管與部署
     body: >-
-      <strong>InvisiProxy LTS</strong> 是一個開源方案，在設計時就考慮了模組化、易用性和便捷部署。主要功能包括廣告攔截、靈活的原始碼生成以及先進的代理導航。<br/><br/>如需完整的部署說明，請訪問我們的官方 <github>GitHub 儲存庫</github>或<docs>此處提供的內建文件</docs>。
+      <strong>Cipher Browser</strong> 是一個開源方案，在設計時就考慮了模組化、易用性和便捷部署。主要功能包括廣告攔截、靈活的原始碼生成以及先進的代理導航。<br/><br/>如需完整的部署說明，請訪問我們的官方 <github>GitHub 儲存庫</github>或<docs>此處提供的內建文件</docs>。
     docsTitle: 更多託管資訊
     imageAlt: 託管與部署圖示
-    imageTitle: InvisiProxy LTS 的託管與部署
+    imageTitle: Cipher Browser 的託管與部署
 
   contributing:
     title: 參與貢獻
     body: >-
-      <strong>InvisiProxy LTS</strong> 的蓬勃發展離不開眾多優秀貢獻者的傾力付出。作為開源專案，<strong>InvisiProxy LTS</strong> 依靠社群的熱情來突破網路審查，幫助使用者更好地獲取資訊。
+      <strong>Cipher Browser</strong> 的蓬勃發展離不開眾多優秀貢獻者的傾力付出。作為開源專案，<strong>Cipher Browser</strong> 依靠社群的熱情來突破網路審查，幫助使用者更好地獲取資訊。
     start: 想要開始貢獻，請訪問我們的 <github>GitHub 儲存庫。</github>
     imageAlt: GitHub 貢獻圖示
-    imageTitle: 在 GitHub 上為 InvisiProxy LTS 做貢獻
+    imageTitle: 在 GitHub 上為 Cipher Browser 做貢獻
 
-  githubTitle: InvisiProxy LTS GitHub 儲存庫
+  githubTitle: Cipher Browser GitHub 儲存庫
 
   bypass:
     title: 繞過審查與過濾
     body: >-
-      InvisiProxy LTS 是一個開源的<strong>網頁代理專案</strong>。藉助我們先進的<strong>網頁代理解鎖</strong>功能，暢享不受限制的線上內容訪問與瀏覽。本專案還讓你能夠在任何地方自行託管，並繞過像中國（防火長城——GFW）和俄羅斯這樣的全國性或地區性封鎖。
+      Cipher Browser 是一個開源的<strong>網頁代理專案</strong>。藉助我們先進的<strong>網頁代理解鎖</strong>功能，暢享不受限制的線上內容訪問與瀏覽。本專案還讓你能夠在任何地方自行託管，並繞過像中國（防火長城——GFW）和俄羅斯這樣的全國性或地區性封鎖。
 
   freeProxy:
     title: 100% 免費網頁代理
@@ -169,11 +169,11 @@ home:
   tor:
     title: 在 Chromium 瀏覽器和 Firefox 中使用 Tor 路由
     body: >-
-      使用 InvisiProxy LTS，你可以直接在基於 Chromium 或 Firefox 的瀏覽器中<strong>訪問 Tor 網路</strong>。這意味著你可以直接在本網站內訪問 <strong>.onion</strong> 網站。這讓你能夠匿名瀏覽網頁（至少在一定程度上；真正的 Tor 有更好的指紋防護），並繞過任何地區限制。本專案還支援設定自訂 SOCKS5 代理以組成代理鏈。
+      使用 Cipher Browser，你可以直接在基於 Chromium 或 Firefox 的瀏覽器中<strong>訪問 Tor 網路</strong>。這意味著你可以直接在本網站內訪問 <strong>.onion</strong> 網站。這讓你能夠匿名瀏覽網頁（至少在一定程度上；真正的 Tor 有更好的指紋防護），並繞過任何地區限制。本專案還支援設定自訂 SOCKS5 代理以組成代理鏈。
 
   unrestricted: 免費、不受限制的瀏覽
   closing: 是時候自由地瀏覽網際網路了。
-  tryFree: 免費試用 InvisiProxy
+  tryFree: 免費試用 Cipher Browser
 
 settings:
   title: 設定
@@ -257,8 +257,8 @@ settings:
     windowDefault: 預設
 
 header:
-  logoLabel: InvisiProxy 標誌
-  homeTitle: InvisiProxy 首頁
+  logoLabel: Cipher Browser 標誌
+  homeTitle: Cipher Browser 首頁
   primaryNav: 主導航
   moreOptions: 更多導航選項
   moreOptionsMenu: 更多選項子選單
@@ -293,7 +293,7 @@ header:
     title: 隱私政策 - 關於使用者隱私的資訊
 
 footer:
-  homeTitle: InvisiProxy 首頁
+  homeTitle: Cipher Browser 首頁
   tagline: 全球網頁代理創新，做到極致。
   dependencies: 依賴
   transports: 傳輸方式
@@ -309,31 +309,31 @@ footer:
   proxyTransports: Proxy Transports - Scramjet 使用的傳輸介面。
   merp: Merp - 高階混淆模組
   merpLabel: Merp 混淆
-  githubTitle: InvisiProxy GitHub 儲存庫
-  patreonTitle: 在 Patreon 上關注 InvisiProxy
+  githubTitle: Cipher Browser GitHub 儲存庫
+  patreonTitle: 在 Patreon 上關注 Cipher Browser
   privacy: 隱私政策
   credits: 致謝
   creditsTitle: 致謝與鳴謝
   backToTop: 返回頂部
-  followGithub: 在 GitHub 上關注 InvisiProxy
+  followGithub: 在 GitHub 上關注 Cipher Browser
   followKofi: 在 Ko-fi 上關注開發者
 
 common:
-  logoAlt: InvisiProxy 標誌
+  logoAlt: Cipher Browser 標誌
   advertisement: 廣告
   description: >-
-    InvisiProxy 是一款支援眾多網站的安全網頁代理服務。繞過過濾，自由享受更安全、更私密的瀏覽體驗，或在 Chromebook 等裝置上、在學校或工作場所解鎖網站，無需下載任何東西。
+    Cipher Browser 是一款支援眾多網站的安全網頁代理服務。繞過過濾，自由享受更安全、更私密的瀏覽體驗，或在 Chromebook 等裝置上、在學校或工作場所解鎖網站，無需下載任何東西。
 
 mirrors:
   toggle: 鏡像
-  toggleTitle: 獲取另一個 InvisiProxy 連結
+  toggleTitle: 獲取另一個 Cipher Browser 連結
   title: 鏡像連結
   close: 關閉鏡像連結
   description: >-
-    獲取另一個連結以繼續使用 InvisiProxy。你的連結在當天保持不變，隨著連結補充，每天都會發放新的連結。
+    獲取另一個連結以繼續使用 Cipher Browser。你的連結在當天保持不變，隨著連結補充，每天都會發放新的連結。
   getLink: 獲取你的鏡像連結
   open: 開啟鏡像連結
-  openLabel: 開啟另一個 InvisiProxy 鏡像
+  openLabel: 開啟另一個 Cipher Browser 鏡像
   issues: 如果連結有任何問題，請在 GitHub 上提交 issue。
 
 proxySettings:
@@ -360,9 +360,9 @@ proxySettings:
 
 faq:
   meta:
-    title: InvisiProxy 常見問題 | 網路錯誤、驗證碼和 YouTube 修復
+    title: Cipher Browser 常見問題 | 網路錯誤、驗證碼和 YouTube 修復
     description: >-
-      遇到網路錯誤、空白頁面、驗證碼迴圈或 YouTube 無法載入？這裡有 InvisiProxy 最常見問題的解決方法，以及登入網站是否安全的說明。
+      遇到網路錯誤、空白頁面、驗證碼迴圈或 YouTube 無法載入？這裡有 Cipher Browser 最常見問題的解決方法，以及登入網站是否安全的說明。
     social: >-
       網路錯誤、空白頁面、驗證碼迴圈和 YouTube 播放問題的快速修復，以及關於 Discord 支援和安全登入的解答。
   title: 常見問題
@@ -374,7 +374,7 @@ faq:
       前往你想獲取圖示的網站，然後使用這個書籤小工具（將其拖到書籤欄）：
     button: 查詢圖示 URL
     copy: >-
-      複製書籤小工具給出的 URL。然後返回 InvisiProxy，在設定中的圖示 URL 處輸入該 URL。盡情享用吧！
+      複製書籤小工具給出的 URL。然後返回 Cipher Browser，在設定中的圖示 URL 處輸入該 URL。盡情享用吧！
   networkError:
     question: >-
       每次使用代理時都出現"Network Error"或網站錯誤？
@@ -432,21 +432,21 @@ faq:
 
 privacy:
   title: 隱私政策
-  subtitle: InvisiProxy，一款私密的網頁代理服務。
+  subtitle: Cipher Browser，一款私密的網頁代理服務。
   effective: '生效日期：2021-07-16'
   updated: '更新日期：2026-10-31'
   what:
-    title: 什麼是 InvisiProxy？
+    title: 什麼是 Cipher Browser？
     body: >-
-      InvisiProxy LTS 是一款網頁代理服務，幫助你在瀏覽器內訪問可能被網路、政府或政策封鎖的網站，無需下載或設定。它以安全的方式實現這一點，並附帶額外的隱私功能。在任何瀏覽器中瀏覽 Tor/Onion 網站、隱藏瀏覽活動並繞過過濾。這包括可能繞過政府的內容封鎖、Chrome 擴充套件、本地客戶端防火牆以及與網路相關的過濾器。<br/>本專案主要作為繞過審查的理想無客戶端方案的概念驗證。
+      Cipher Browser 是一款網頁代理服務，幫助你在瀏覽器內訪問可能被網路、政府或政策封鎖的網站，無需下載或設定。它以安全的方式實現這一點，並附帶額外的隱私功能。在任何瀏覽器中瀏覽 Tor/Onion 網站、隱藏瀏覽活動並繞過過濾。這包括可能繞過政府的內容封鎖、Chrome 擴充套件、本地客戶端防火牆以及與網路相關的過濾器。<br/>本專案主要作為繞過審查的理想無客戶端方案的概念驗證。
   data:
     title: 是否收集任何資料？
     body: >-
-      InvisiProxy 本身不會記錄或收集你的瀏覽內容。為保護使用者隱私，後端已禁用日誌記錄。唯一的例外是鏡像連結按鈕，它會在記憶體中儲存你的 IP 地址幾秒鐘以防止濫用；該資訊絕不會寫入磁碟。含廣告域名上的廣告合作伙伴會收集他們自己的資料，詳見下方"廣告"部分。NextDNS 查詢經過調整，不記錄客戶端 IP 或域名，並儲存在瑞士。NextDNS 對相關數值的日誌保留極少，僅用於確保服務順利執行。鑑於本專案的規模，我們使用 Cloudflare 來提升效能並簡化 DNS 管理。Cloudflare 的數值資料僅被最低限度地用於統計訪問量和頁面瀏覽量，以判斷何時需要升級伺服器。NGINX 被設定為不儲存任何日誌。InvisiProxy LTS 堅守終結網路審查的理念，同時重視使用者隱私。除此之外，我們使用 Wisp 協定（用於代理 TCP 連線）配合 libcurl-transport，在 WebAssembly 中執行 SSL/TLS，實現端到端加密。本服務力求儘可能透明，請記住，你隨時可以自行託管，確保一切都在你的掌控之中。<br/><br/>如果你希望提出隱私宣告或請求，請透過 Discord 聯絡我們。
+      Cipher Browser 本身不會記錄或收集你的瀏覽內容。為保護使用者隱私，後端已禁用日誌記錄。唯一的例外是鏡像連結按鈕，它會在記憶體中儲存你的 IP 地址幾秒鐘以防止濫用；該資訊絕不會寫入磁碟。含廣告域名上的廣告合作伙伴會收集他們自己的資料，詳見下方"廣告"部分。NextDNS 查詢經過調整，不記錄客戶端 IP 或域名，並儲存在瑞士。NextDNS 對相關數值的日誌保留極少，僅用於確保服務順利執行。鑑於本專案的規模，我們使用 Cloudflare 來提升效能並簡化 DNS 管理。Cloudflare 的數值資料僅被最低限度地用於統計訪問量和頁面瀏覽量，以判斷何時需要升級伺服器。NGINX 被設定為不儲存任何日誌。Cipher Browser 堅守終結網路審查的理念，同時重視使用者隱私。除此之外，我們使用 Wisp 協定（用於代理 TCP 連線）配合 libcurl-transport，在 WebAssembly 中執行 SSL/TLS，實現端到端加密。本服務力求儘可能透明，請記住，你隨時可以自行託管，確保一切都在你的掌控之中。<br/><br/>如果你希望提出隱私宣告或請求，請透過 Discord 聯絡我們。
   security:
     title: 安全
     body: >-
-      InvisiProxy LTS 從底層開始構建，旨在為使用者提供安全可靠的網頁代理服務。InvisiProxy LTS 背後的核心技術之一，是由 Mercury Workshop 開發的全新 Wisp 協定。<br/><br/>與以往的模型相比，該協定帶來了多項創新功能和改進，提升了服務的速度和安全性。
+      Cipher Browser 從底層開始構建，旨在為使用者提供安全可靠的網頁代理服務。Cipher Browser 背後的核心技術之一，是由 Mercury Workshop 開發的全新 Wisp 協定。<br/><br/>與以往的模型相比，該協定帶來了多項創新功能和改進，提升了服務的速度和安全性。
     intro: >-
       Wisp 協定旨在滿足現代網路流量需求，同時保持高安全標準。透過實現 Wisp，本專案獲得了以下優勢：
     performance: >-
@@ -458,31 +458,31 @@ privacy:
     fingerprinting: >-
       抗指紋識別：本專案在官方實例的反向代理配置中具備強大的抗指紋識別機制。這意味著代理被設計為儘量減少可用於追蹤或識別使用者的唯一識別碼，從而增強隱私。透過遵循行業最佳實踐並持續更新方法，使用者可以匿名瀏覽，不留下可識別的痕跡。
     transparency: >-
-      透明度：透明是 InvisiProxy LTS 的核心原則。本專案採用開源模式運營，社群可以審查程式碼庫並做出貢獻。這種開放性不僅建立了信任，還能透過社群反饋和協作實現持續改進。透過堅持透明的做法，InvisiProxy LTS 確保使用者瞭解他們的資料如何被處理，以及有哪些保護隱私的措施。
+      透明度：透明是 Cipher Browser 的核心原則。本專案採用開源模式運營，社群可以審查程式碼庫並做出貢獻。這種開放性不僅建立了信任，還能透過社群反饋和協作實現持續改進。透過堅持透明的做法，Cipher Browser 確保使用者瞭解他們的資料如何被處理，以及有哪些保護隱私的措施。
     randomisation: >-
-      原始碼/全域性隨機化：為了進一步增強安全性和隱私，InvisiProxy LTS 採用了原始碼和全域性隨機化。這讓專案能在域名上更長時間不被封鎖，同時提升瀏覽時的匿名性。普通網頁代理在重寫資源時會留下痕跡，而採用這種方法後，代理更難被檢測和封鎖。
+      原始碼/全域性隨機化：為了進一步增強安全性和隱私，Cipher Browser 採用了原始碼和全域性隨機化。這讓專案能在域名上更長時間不被封鎖，同時提升瀏覽時的匿名性。普通網頁代理在重寫資源時會留下痕跡，而採用這種方法後，代理更難被檢測和封鎖。
     encryption: >-
-      加密：InvisiProxy LTS 採用先進的代理技術，專注於端到端加密和安全的資料傳輸，特別是在 URL 重寫代理方面。注意：這仍是一項進行中的大型工作，歡迎貢獻。
+      加密：Cipher Browser 採用先進的代理技術，專注於端到端加密和安全的資料傳輸，特別是在 URL 重寫代理方面。注意：這仍是一項進行中的大型工作，歡迎貢獻。
     audits: >-
       定期審計：定期進行安全審計，以發現並修復潛在漏洞。
   advertising:
     title: 廣告
     body: >-
-      部分 InvisiProxy 域名會展示廣告以支付託管費用。Patreon 實例始終無廣告。廣告由第三方廣告網路投放：Adsterra、Adcash 和 Monetag。廣告只會出現在 InvisiProxy 自己的頁面和載入介面上，絕不會出現在你透過代理瀏覽的網站內部。<br/><br/>廣告載入時，廣告網路會獲得你的 IP 地址、瀏覽器使用者代理、你正在訪問的域名以及類似的技術資訊，並可能設定或讀取其自身的 Cookie 或使用類似技術來展示廣告、限制展示頻率、衡量效果和防止欺詐。這些廣告網路可能會在我們的頁面上執行它們的程式碼；它們對你資料的處理受其各自的隱私政策約束，而非我們的。<br/><br/>你可以在 optout.aboutads.info 或 youronlinechoices.eu 選擇退出許多廣告網路。你也可以使用內容攔截器遮蔽廣告，或使用 Patreon 實例。
+      部分 Cipher Browser 域名會展示廣告以支付託管費用。Patreon 實例始終無廣告。廣告由第三方廣告網路投放：Adsterra、Adcash 和 Monetag。廣告只會出現在 Cipher Browser 自己的頁面和載入介面上，絕不會出現在你透過代理瀏覽的網站內部。<br/><br/>廣告載入時，廣告網路會獲得你的 IP 地址、瀏覽器使用者代理、你正在訪問的域名以及類似的技術資訊，並可能設定或讀取其自身的 Cookie 或使用類似技術來展示廣告、限制展示頻率、衡量效果和防止欺詐。這些廣告網路可能會在我們的頁面上執行它們的程式碼；它們對你資料的處理受其各自的隱私政策約束，而非我們的。<br/><br/>你可以在 optout.aboutads.info 或 youronlinechoices.eu 選擇退出許多廣告網路。你也可以使用內容攔截器遮蔽廣告，或使用 Patreon 實例。
   usage:
     title: 其他使用說明
     storage: >-
-      InvisiProxy 使用"Cookie"、IndexedDB、localStorage 和 sessionStorage 來維持使用者會話（詳見下文），並在你的電腦上儲存你的偏好設定。所有這些資訊都儲存在你的裝置上，InvisiProxy 不會將其用於任何分析。廣告合作伙伴可能會儲存他們自己的 Cookie，詳見"廣告"部分。
+      Cipher Browser 使用"Cookie"、IndexedDB、localStorage 和 sessionStorage 來維持使用者會話（詳見下文），並在你的電腦上儲存你的偏好設定。所有這些資訊都儲存在你的裝置上，Cipher Browser 不會將其用於任何分析。廣告合作伙伴可能會儲存他們自己的 Cookie，詳見"廣告"部分。
     cookies: >-
-      Cookie 是網站儲存在訪問者電腦上的一串資訊，訪問者每次返回時，瀏覽器都會將其提供給網站。InvisiProxy 使用 Cookie 來確保設定選單的可用性，以及儲存使用者偏好。不希望在電腦上儲存 Cookie 的使用者，應在使用 InvisiProxy 網站前將瀏覽器設定為拒絕 Cookie，但這樣做的缺點是，沒有 Cookie、localStorage 或 IndexedDB 的幫助，InvisiProxy 的某些功能將無法正常執行。InvisiProxy 不會出於分析目的使用任何 Cookie、IndexedDB、localStorage 或 sessionStorage 功能；只有以下功能依賴它們在本地儲存持久資料：Scramjet（快取被代理的資源、會話狀態等）、標籤頁、書籤、自動補全（經代理）、設定選單：標籤頁偽裝、圖示預設、傳輸方式選項、搜尋引擎、主題、語言、視窗類型、Tor 路由、地區切換、隱藏廣告、隱藏歷史記錄、阻止視窗洩漏、阻止 WebRTC 以及指紋隨機化。
+      Cookie 是網站儲存在訪問者電腦上的一串資訊，訪問者每次返回時，瀏覽器都會將其提供給網站。Cipher Browser 使用 Cookie 來確保設定選單的可用性，以及儲存使用者偏好。不希望在電腦上儲存 Cookie 的使用者，應在使用 Cipher Browser 網站前將瀏覽器設定為拒絕 Cookie，但這樣做的缺點是，沒有 Cookie、localStorage 或 IndexedDB 的幫助，Cipher Browser 的某些功能將無法正常執行。Cipher Browser 不會出於分析目的使用任何 Cookie、IndexedDB、localStorage 或 sessionStorage 功能；只有以下功能依賴它們在本地儲存持久資料：Scramjet（快取被代理的資源、會話狀態等）、標籤頁、書籤、自動補全（經代理）、設定選單：標籤頁偽裝、圖示預設、傳輸方式選項、搜尋引擎、主題、語言、視窗類型、Tor 路由、地區切換、隱藏廣告、隱藏歷史記錄、阻止視窗洩漏、阻止 WebRTC 以及指紋隨機化。
     serviceWorkers: >-
-      此外，InvisiProxy 使用 Service Worker 作為我們網頁代理的技術。它可以攔截相應的網路流量等，是本專案的核心功能。
+      此外，Cipher Browser 使用 Service Worker 作為我們網頁代理的技術。它可以攔截相應的網路流量等，是本專案的核心功能。
     consent: >-
-      在不更改 Cookie 設定的情況下繼續瀏覽我們的網站，即表示你在法律不要求單獨同意的範圍內，確認並同意 InvisiProxy 使用 Cookie，以及上述廣告合作伙伴使用的 Cookie。
+      在不更改 Cookie 設定的情況下繼續瀏覽我們的網站，即表示你在法律不要求單獨同意的範圍內，確認並同意 Cipher Browser 使用 Cookie，以及上述廣告合作伙伴使用的 Cookie。
   changes:
     title: 結語
     body: >-
-      雖然大多數變更可能都很小，但 InvisiProxy 可能會不時更改其隱私政策，具體由 InvisiProxy LTS 自行決定。InvisiProxy LTS 鼓勵訪問者經常檢視本頁面，瞭解隱私政策的任何變化。在隱私政策變更後繼續使用本網站，即表示你接受該變更。如遇濫用或 DDoS 攻擊，InvisiProxy LTS 可能不得不臨時記錄資料，以緩解攻擊並確保服務正常執行。在這種情況下，所有記錄的資料將在攻擊緩解後立即被安全刪除。
+      雖然大多數變更可能都很小，但 Cipher Browser 可能會不時更改其隱私政策，具體由 Cipher Browser 自行決定。Cipher Browser 鼓勵訪問者經常檢視本頁面，瞭解隱私政策的任何變化。在隱私政策變更後繼續使用本網站，即表示你接受該變更。如遇濫用或 DDoS 攻擊，Cipher Browser 可能不得不臨時記錄資料，以緩解攻擊並確保服務正常執行。在這種情況下，所有記錄的資料將在攻擊緩解後立即被安全刪除。
   contact:
     title: 聯絡方式與致謝
     body: >-
@@ -498,10 +498,10 @@ docs:
     dockerVersion: Docker 鏡像版本
     dockerPulls: Docker 拉取次數
   intro: >-
-    <strong>InvisiProxy LTS</strong>（前身為 Holy Unblocker LTS）是一項實驗性的網頁代理服務，無論審查方式是客戶端還是基於網路，都可以繞過網頁過濾器或"攔截器"。這包括繞過政府的內容封鎖、Chrome 擴充套件、本地客戶端防火牆以及與網路相關的過濾器。本專案甚至可以讓你透過一個網站，在任何瀏覽器（包括 Chromium）中瀏覽 Tor/Onion 網站！
-  star: 給儲存庫點個 Star 來支援 InvisiProxy 吧！
+    <strong>Cipher Browser</strong>（前身為 Holy Unblocker LTS）是一項實驗性的網頁代理服務，無論審查方式是客戶端還是基於網路，都可以繞過網頁過濾器或"攔截器"。這包括繞過政府的內容封鎖、Chrome 擴充套件、本地客戶端防火牆以及與網路相關的過濾器。本專案甚至可以讓你透過一個網站，在任何瀏覽器（包括 Chromium）中瀏覽 Tor/Onion 網站！
+  star: 給儲存庫點個 Star 來支援 Cipher Browser 吧！
   about: >-
-    本專案主要作為繞過審查的理想無客戶端方案的概念驗證。一個很好的使用場景是：當你需要使用 Tor、在瀏覽時切換地區（或使用外部代理）、無需註冊賬號即可瀏覽網站（減少指紋識別）、繞過反廣告攔截，以及/或儘量少留下裝置活動痕跡時。只需在任意域名上託管本專案，就能擁有一個無需在裝置上下載任何東西的 VPN 替代方案。作為安全的網頁代理服務，它支援大量網站，更新頻繁，並專注於易於自託管。InvisiProxy LTS 可用於大量網站，包括 YouTube、Gemini、ChatGPT、Discord、GeForce NOW 等！與其他網頁代理相比，本專案在繞過網頁過濾（DOM 偽裝和原始碼隨機化）以及各國的全域性審查方面，還擁有不少獨有功能。目前支援的國家有中國（GFW）和俄羅斯。
+    本專案主要作為繞過審查的理想無客戶端方案的概念驗證。一個很好的使用場景是：當你需要使用 Tor、在瀏覽時切換地區（或使用外部代理）、無需註冊賬號即可瀏覽網站（減少指紋識別）、繞過反廣告攔截，以及/或儘量少留下裝置活動痕跡時。只需在任意域名上託管本專案，就能擁有一個無需在裝置上下載任何東西的 VPN 替代方案。作為安全的網頁代理服務，它支援大量網站，更新頻繁，並專注於易於自託管。Cipher Browser 可用於大量網站，包括 YouTube、Gemini、ChatGPT、Discord、GeForce NOW 等！與其他網頁代理相比，本專案在繞過網頁過濾（DOM 偽裝和原始碼隨機化）以及各國的全域性審查方面，還擁有不少獨有功能。目前支援的國家有中國（GFW）和俄羅斯。
   users: >-
     自 2020 年以來已有超過 3000 萬使用者。非常感謝大家的支援，我從未想過網頁代理社群會變得如此龐大。
   branches:
@@ -510,19 +510,19 @@ docs:
     latest: Latest（master；面向 FOSS 和 SEO 構建）
     beta: Beta（待合併的更改；可能導致問題的更改）
     production: >-
-      Production（v4、v5、v6；InvisiProxy LTS 的穩定版本。針對生產環境自託管的更改；最大化過濾規避和請求處理能力）
+      Production（v4、v5、v6；Cipher Browser 的穩定版本。針對生產環境自託管的更改；最大化過濾規避和請求處理能力）
     switch: 自託管時請考慮切換到 Production 分支！
   selfHost: >-
-    如果你想自行託管本專案，請檢視<deploy>自部署選項</deploy>。無法使用任何免費選項部署？可以看看 Koyeb，或者考慮便宜的付費 VPS 託管方案。如果你不想自託管，請點選 InvisiProxy 上的鏡像連結選單。
+    如果你想自行託管本專案，請檢視<deploy>自部署選項</deploy>。無法使用任何免費選項部署？可以看看 Koyeb，或者考慮便宜的付費 VPS 託管方案。如果你不想自託管，請點選 Cipher Browser 上的鏡像連結選單。
   discord: "請務必加入 TitaniumNetwork 的 Discord 獲取更多官方網站連結："
   caution:
     title: 注意
     body: >-
-      如果你要自託管 InvisiProxy LTS，請切換到 PRODUCTION 分支，該分支會自動啟用過濾規避功能。master 分支包含尚未準備好用於自託管的開發中更改。不過，如果你想為本專案做貢獻，請向 master 分支提交 PR。
+      如果你要自託管 Cipher Browser，請切換到 PRODUCTION 分支，該分支會自動啟用過濾規避功能。master 分支包含尚未準備好用於自託管的開發中更改。不過，如果你想為本專案做貢獻，請向 master 分支提交 PR。
   tip:
     title: 提示
     body: >-
-      InvisiProxy LTS 針對自託管進行了最佳化，為你提供最大的隱私控制權！fork 本儲存庫，也歡迎點個 Star。你可以使用免費或付費的部署選項進行自託管，或者將其部署在專用實例（VPS）上以獲得更好的效能。
+      Cipher Browser 針對自託管進行了最佳化，為你提供最大的隱私控制權！fork 本儲存庫，也歡迎點個 Star。你可以使用免費或付費的部署選項進行自託管，或者將其部署在專用實例（VPS）上以獲得更好的效能。
   sites:
     site: 支援的網站
     features: 功能
@@ -544,7 +544,7 @@ docs:
     more: 以及幾乎所有網站！
     moreFeature: 專為高強度生產負載和簡便部署而打造
   deploy:
-    title: 部署 InvisiProxy
+    title: 部署 Cipher Browser
     free: 免費部署
     alternatives: 其他免費平臺
     paid: 生產環境付費/免費選項（需要支付資訊）
@@ -559,9 +559,9 @@ docs:
     open: >-
       前往官方 <codespaces>Codespaces</codespaces> 網站（請確保你已註冊 GitHub 賬號）
     select: >-
-      選擇 <strong>New Codespaces</strong>，並在你的賬號中找到 <em>[USERNAME]/InvisiProxy</em>
+      選擇 <strong>New Codespaces</strong>，並在你的賬號中找到 <em>[USERNAME]/Cipher Browser</em>
     branch: >-
-      確保分支設定為 <code>master</code>，並將 dev container 配置設定為 <strong>InvisiProxy LTS</strong>
+      確保分支設定為 <code>master</code>，並將 dev container 配置設定為 <strong>Cipher Browser</strong>
     create: 選擇 <strong>Create Codespace</strong>，等待容器完成設定
     install: >-
       在終端中輸入 <code>pnpm run fresh-install</code> 和 <code>pnpm start</code>
@@ -635,11 +635,11 @@ docs:
     dependenciesBody: >-
       然後你需要安裝 git、musl、nginx（或 caddy）和 Node.js。以下是 Ubuntu LTS 的示例：
     tor: Tor 支援（可選）
-    configure: 配置 InvisiProxy
+    configure: 配置 Cipher Browser
     configureBody: >-
       最重要的選項是 production，以及混淆和 DOM 偽裝技術。
     configureMore: '之後按需配置即可：'
-    run: 克隆並執行 InvisiProxy
+    run: 克隆並執行 Cipher Browser
     runBody: >-
       然後執行相應的程序；如果你在配置中將 production 設為 true，pm2 將與我們自己的 worker/快取系統一起自動啟用。
     restart: 當然，如果你使用了 NGINX 或 caddy，請重啟/重新載入它
@@ -660,7 +660,7 @@ docs:
       disguiseFiles: >-
         啟用 DOM 偽裝，混淆 InvisiLTS 真實的內容獲取過程。具體做法是偽裝請求、解壓，然後重建 DOM 樹。
       usingSEO: >-
-        啟用原始碼隨機化，透過替換 <code>./src/data.json</code> 中指定的資料塊來隨機化原始碼。對於掩蓋會自動標記或封鎖 InvisiProxy LTS 的關鍵詞以及防止原始碼封鎖非常有用。
+        啟用原始碼隨機化，透過替換 <code>./src/data.json</code> 中指定的資料塊來隨機化原始碼。對於掩蓋會自動標記或封鎖 Cipher Browser 的關鍵詞以及防止原始碼封鎖非常有用。
       verbose: >-
         啟用編譯和構建訊息，以便在編譯時檢視進度和可能出現的問題。
       mirrorLinksFile: >-
@@ -674,7 +674,7 @@ docs:
   translations:
     title: 翻譯
     crowdin: >-
-      InvisiProxy LTS 在 <crowdin>Crowdin</crowdin> 上進行翻譯，任何人都可以參與，無需接觸程式碼。加入專案，選擇一種語言即可開始翻譯。完成的翻譯會自動同步到 <code>./locales/</code>。
+      Cipher Browser 在 <crowdin>Crowdin</crowdin> 上進行翻譯，任何人都可以參與，無需接觸程式碼。加入專案，選擇一種語言即可開始翻譯。完成的翻譯會自動同步到 <code>./locales/</code>。
     rules: >-
       翻譯規則（佔位符、標籤和遮蔽詞）請參閱 <readme/>。如果 Crowdin 上沒有你的語言，請提交 issue 或在 Discord 中詢問。
   tor:
@@ -684,7 +684,7 @@ docs:
     guide: '按照這份指南託管 Tor 即可：'
     cliGuide: '備選指南（命令列）：'
     body: >-
-      如果你在使用 Ubuntu 的 VPS 上託管 InvisiProxy LTS，可以考慮將 Tor 掛載到 systemctl，便於生產環境管理。一旦 Tor 在 Linux 或 Windows 上執行起來，當使用者在設定選單中啟用後，它就會自動與 InvisiProxy LTS 配合使用。
+      如果你在使用 Ubuntu 的 VPS 上託管 Cipher Browser，可以考慮將 Tor 掛載到 systemctl，便於生產環境管理。一旦 Tor 在 Linux 或 Windows 上執行起來，當使用者在設定選單中啟用後，它就會自動與 Cipher Browser 配合使用。
     customWisp: 使用者也可以在代理偏好設定中設定自己的 Wisp 伺服器。
     customProxy: >-
       如果你想使用自訂的 HTTP/HTTPS/SOCKS5 代理來轉發 Scramjet 的流量，這是在伺服器端的 <code>./src/server/wisp.ts</code> 中處理的。
@@ -694,7 +694,7 @@ docs:
       調整透過設定選單分配的網頁代理相關設定的主要位置是 <code>./views/assets/js/register-sw.js</code>。在這裡，你可以修改透過 Cookie 在本地設定的傳輸方式選項、替換 SOCKS5 代理、更改洋蔥路由埠、指定黑名單等。
     options:
       stockSW: >-
-        Ultraviolet 的預設 Service Worker 配置檔案。不過 InvisiProxy 會自動啟用廣告攔截，因此預設不使用此檔案。
+        Ultraviolet 的預設 Service Worker 配置檔案。不過 Cipher Browser 會自動啟用廣告攔截，因此預設不使用此檔案。
       blacklistSW: >-
         Ultraviolet 的修改版本，支援域名黑名單和廣告攔截。
       proxyUrl: >-
@@ -713,7 +713,7 @@ docs:
     options:
       getDomain: >-
         該常量用於指定在將 URL 新增到位址列時需要移除的子域名。
-      goFrame: 指定 InvisiProxy LTS 使用的隱身框架
+      goFrame: 指定 Cipher Browser 使用的隱身框架
       sx: >-
         該常量指定當使用者輸入的內容不是 URL 時要經代理使用的搜尋引擎
       search: 這些函式用於指定和解析所提交 URL 的查詢
@@ -729,7 +729,7 @@ docs:
     info: 結構說明
     root:
       views: >-
-        InvisiProxy 的網站主體放在這裡，靜態資源由此提供。
+        Cipher Browser 的網站主體放在這裡，靜態資源由此提供。
       src: 用於將來實現混淆和關鍵詞移除功能。
     views: <code>/views/</code> 的詳細說明
     folders:
@@ -751,7 +751,7 @@ docs:
         建立並管理讓 Ultraviolet 執行的 Service Worker，同時使用 bare transport。
   future:
     title: 未來計劃
-    body: <todo>這裡</todo>是 InvisiProxy LTS 的待辦事項清單（並不詳盡）。
+    body: <todo>這裡</todo>是 Cipher Browser 的待辦事項清單（並不詳盡）。
   beginners:
     title: 面向新手的外部代理與託管簡要說明
     intro: 首先，你需要在本地或外部託管你的代理。
@@ -768,11 +768,11 @@ docs:
       這是一個 DNS 記錄示例。自託管時最好使用 <code>A 記錄</code>。
     dnsAlt: DNS 記錄
     root: >-
-      <code>@</code> 和 <code>www.example.com</code> 用於 InvisiProxy LTS。
+      <code>@</code> 和 <code>www.example.com</code> 用於 Cipher Browser。
     subdomain: >-
       <code>a.example.com</code> 根據網站維護者的需要，用於 Libreddit 或 Invidious 等其他實例。
     local: >-
-      如前所述，InvisiProxy 開箱即用地在本地託管 Scramjet 和 Ultraviolet，無需外部實例。
+      如前所述，Cipher Browser 開箱即用地在本地託管 Scramjet 和 Ultraviolet，無需外部實例。
   domain:
     title: 域名步驟
     porkbun: >-
@@ -837,7 +837,7 @@ docs:
   more:
     title: 更多資訊
     maintained: >-
-      本專案由 InvisiProxy LTS 團隊維護，是 TitaniumNetwork 官方旗艦網頁代理網站。
+      本專案由 Cipher Browser 團隊維護，是 TitaniumNetwork 官方旗艦網頁代理網站。
     website: 檢視官方網站了解更多詳情和致謝。
     sources: '網頁代理來源：'
     sourcesBody: >-
@@ -849,11 +849,11 @@ docs:
     mentions: '特別提及：'
     hostingProvider: 託管服務商
   meta:
-    title: InvisiProxy 文件 | 自託管、配置與 Tor 設定
+    title: Cipher Browser 文件 | 自託管、配置與 Tor 設定
     description: >-
-      自託管 InvisiProxy：使用 pnpm 安裝，在 config.json 中配置，透過 Tor 或 SOCKS5 代理轉發流量，並瞭解每個依賴的作用。
+      自託管 Cipher Browser：使用 pnpm 安裝，在 config.json 中配置，透過 Tor 或 SOCKS5 代理轉發流量，並瞭解每個依賴的作用。
     social: >-
-      執行你自己的 InvisiProxy 實例。涵蓋安裝、config.json、Tor 和 SOCKS5 路由，以及本專案所基於的庫。
+      執行你自己的 Cipher Browser 實例。涵蓋安裝、config.json、Tor 和 SOCKS5 路由，以及本專案所基於的庫。
 
 apps:
   intro: >-
@@ -879,12 +879,12 @@ partners:
   intro: >-
     探索我們的合作專案。這些專案透過代理執行，因此你可以在這裡不受封鎖地使用它們。
   features: >-
-    我們的合作伙伴提供未封鎖的遊戲、網頁移植版和模擬器等功能。所有合作伙伴都是開源且免費使用的。如果可以的話，請考慮加入他們的社群並支援他們。它們都採用與 InvisiProxy 類似的模式，所以請務必加入各自的 Discord 獲取更多連結。
+    我們的合作伙伴提供未封鎖的遊戲、網頁移植版和模擬器等功能。所有合作伙伴都是開源且免費使用的。如果可以的話，請考慮加入他們的社群並支援他們。它們都採用與 Cipher Browser 類似的模式，所以請務必加入各自的 Discord 獲取更多連結。
 
 credits:
   title: 致謝
   intro: >-
-    InvisiProxy LTS 是一款官方網頁代理服務，無論是基於擴充套件還是基於網路的網頁過濾器都能繞過。<br/>本專案讓你能夠訪問原本被政府、學校或工作場所封鎖的內容。
+    Cipher Browser 是一款官方網頁代理服務，無論是基於擴充套件還是基於網路的網頁過濾器都能繞過。<br/>本專案讓你能夠訪問原本被政府、學校或工作場所封鎖的內容。
   name: 名稱
   contributions: 貢獻
   contact: 備註與聯絡方式
@@ -899,7 +899,7 @@ icons:
   title: 圖示資訊
   subtitle: 如何查詢網站的圖示 URL
   copy: >-
-    複製書籤小工具給出的 URL。然後返回 InvisiProxy，在設定中的圖示 URL 處輸入該 URL。盡情享用吧！
+    複製書籤小工具給出的 URL。然後返回 Cipher Browser，在設定中的圖示 URL 處輸入該 URL。盡情享用吧！
 
 error:
   pageTitle: 錯誤

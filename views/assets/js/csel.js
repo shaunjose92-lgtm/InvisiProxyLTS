@@ -443,6 +443,9 @@ if (document.getElementById('csel')) {
       pageShowAds();
       setStorage('HideAds', false);
     }
+    // Changing this setting switches service-worker scripts. A page reload is
+    // required or the old ad blocker keeps intercepting login requests.
+    if (e.isTrusted) location.reload();
   });
 
   attachClassEventListener('useonion', 'change', (e) => {
@@ -794,7 +797,7 @@ for (const torToggle of document.getElementsByClassName('useonion')) {
 // Ads are disabled by default. Load ads if ads were enabled previously.
 // Change !== to === here if ads should be enabled by default.
 useStorageArgs('HideAds', (s) => {
-  if (s !== false) pageHideAds();
+  if (s === true) pageHideAds();
   else {
     pageShowAds();
     classUpdateHandler(document.getElementsByClassName('hideads'), 'off')();

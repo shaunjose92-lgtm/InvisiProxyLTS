@@ -1,11 +1,11 @@
 {
-	"short_name": "InvisiProxy LTS",
-	"name": "InvisiProxy LTS | Free Web Proxy Service",
+	"short_name": "Cipher Browser",
+	"name": "Cipher Browser — Browse the web",
 	"icons": [
 		{
-			"src": "assets/img/icon.png",
+			"src": "assets/img/cipher-mark-512.png",
 			"type": "image/png",
-			"sizes": "878x1262"
+			"sizes": "512x512"
 		},
 		{
 			"src": "assets/ico/android-icon-36x36.png",
@@ -48,7 +48,7 @@
 	"display": "standalone",
 	"theme_color": "#b4213b",
 	"background_color": "#1f003e",
-	"description": "InvisiProxy LTS is a free and secure web proxy service that helps you bypass web filters and access blocked websites. Enjoy anonymous browsing and internet freedom on devices like Chromebooks at school or work.",
+	"description": "Cipher Browser is a free and secure web proxy service that helps you bypass web filters and access blocked websites. Enjoy anonymous browsing and internet freedom on devices like Chromebooks at school or work.",
 	"short_description": "Free web proxy service for bypassing filters and accessing blocked sites.",
 	"keywords": [
 		"proxy",

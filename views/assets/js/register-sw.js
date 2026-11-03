@@ -37,6 +37,7 @@ import {
 } from '../../../src/browser/error-page.ts';
 import { proxyCodec } from '../../../src/browser/proxy-codec.ts';
 import { skipHttpCache } from '../../../src/browser/http-cache.ts';
+import { serviceWorkerForAdBlocking } from '../../../src/browser/adblock.ts';
 (() => {
   const swScope = route("/"),
     swAllowedHostnames = ['localhost', '127.0.0.1'],
@@ -57,7 +58,7 @@ import { skipHttpCache } from '../../../src/browser/http-cache.ts';
   });
 
   const getSWRoute = () =>
-    route(readStorage('HideAds') !== false ? '/sw-blacklist.js' : '/sw.js');
+    route(serviceWorkerForAdBlocking(readStorage('HideAds')));
 
   const unregisterStaleSWs = async () => {
     const expected = new URL(getSWRoute(), location.origin).pathname;
@@ -280,7 +281,8 @@ import { skipHttpCache } from '../../../src/browser/http-cache.ts';
               skipHttpCache(
                 parsed.destination ?? '',
                 request.initialHeaders?.toRawHeaders() ?? [],
-                props.response.rawHeaders ?? []
+                props.response.rawHeaders ?? [],
+                { method: request.method, status: props.response.status }
               )
             )
               request.cache = 'no-store';

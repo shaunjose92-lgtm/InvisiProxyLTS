@@ -53,7 +53,7 @@ export default function Icons() {
 export function Head() {
 	return (
 		<>
-			<title>{titled('InvisiProxy LTS', translate('icons.title'))}</title>
+			<title>{titled('Cipher Browser', translate('icons.title'))}</title>
 			<PageDescription />
 			<HeadContent />
 			<ParticlesScript />

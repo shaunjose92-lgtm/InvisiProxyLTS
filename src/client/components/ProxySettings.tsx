@@ -111,7 +111,6 @@ export default function ProxySettings() {
 									'settings.privacy.hideAdsDescription'
 								)}
 								class="hideads"
-								checked
 							/>
 							<SettingToggle
 								label={translate(

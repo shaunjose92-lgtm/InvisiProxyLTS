@@ -28,8 +28,26 @@ describe('HTTP cache guard', () => {
 			);
 	});
 
+  test('Authentication and private responses must never enter the proxy HTTP cache.', () => {
+    const authHeaders: [string, string][] = [['Authorization', 'Bearer test-token']];
+    const sessionHeaders: [string, string][] = [['Set-Cookie', 'session=example; Secure; HttpOnly']];
+    const small = length(320);
+    assert.equal(skipHttpCache('', [], small), true, 'fetch/XHR responses can contain user data');
+    assert.equal(skipHttpCache('document', [], small), true, 'HTML documents may carry CSRF tokens');
+    assert.equal(skipHttpCache('iframe', [], small), true);
+    assert.equal(skipHttpCache('script', authHeaders, small), true);
+    assert.equal(skipHttpCache('style', [], sessionHeaders), true);
+    assert.equal(skipHttpCache('image', [], [['Cache-Control', 'private, max-age=60']]), true);
+    assert.equal(skipHttpCache('script', [], [['Cache-Control', 'no-store']]), true);
+    assert.equal(skipHttpCache('script', [], [['Vary', 'Accept-Encoding, Cookie']]), true);
+    assert.equal(skipHttpCache('script', [], small, {method: 'POST', status: 200}), true);
+    assert.equal(skipHttpCache('script', [], small, {method: 'GET', status: 401}), true);
+    assert.equal(skipHttpCache('script', [], small, {method: 'GET', status: 403}), true);
+    assert.equal(skipHttpCache('script', [], small, {method: 'GET', status: 200}), false);
+  });
+
 	test('Large or unsized fetch bodies bypass the cache, page assets do not.', () => {
-		assert.equal(skipHttpCache('', [], length(1024)), false);
+		assert.equal(skipHttpCache('', [], length(1024)), true);
 		assert.equal(skipHttpCache('', [], length(512 * 1024)), true);
 		assert.equal(skipHttpCache('', [], []), true);
 		assert.equal(skipHttpCache('script', [], length(1024 * 1024)), false);

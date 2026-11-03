@@ -61,7 +61,7 @@ export default function ProxyFrame() {
 			<div class="loader loader-active">
 				<img
 					class="pr-logo"
-					src={route('/assets/img/hero.webp')}
+					src={route('/assets/img/cipher-mark-512.png')}
 					alt=""
 				/>
 				<p
@@ -73,8 +73,9 @@ export default function ProxyFrame() {
 				<div class="loader-w"></div>
 				<LoaderPlacements />
 			</div>
-			<div class="omnibar" id="pr-sj">
+			<div class="omnibar cipher-browser-chrome" id="pr-sj">
 				<div class="tab-strip">
+					<a class="cipher-frame-identity" href={route('/browsing')} title="Cipher Browser — new tab"><span class="cipher-frame-identity-mark">C</span><span class="cipher-frame-identity-label">Cipher<span>Browser</span></span></a>
 					<div
 						id="tab-list"
 						role="tablist"
@@ -91,18 +92,18 @@ export default function ProxyFrame() {
 						<i class="fas fa-plus" aria-hidden="true"></i>
 					</button>
 				</div>
-				<a class="logo" href={route('/browsing')}>
+				<a class="logo cipher-frame-home" href={route('/browsing')}>
 					<span class="sr-only">
 						{translate('header.browse.label')}
 					</span>
 				</a>
-				<button type="button" id="omnibar-back" title="Back">
+				<button type="button" id="omnibar-back" title="Go back">
 					<i class="fas fa-arrow-left"></i>
 				</button>
-				<button type="button" id="omnibar-forward" title="Forward">
+				<button type="button" id="omnibar-forward" title="Go forward">
 					<i class="fas fa-arrow-right"></i>
 				</button>
-				<button type="button" id="omnibar-reload" title="Refresh">
+				<button type="button" id="omnibar-reload" title="Refresh this page">
 					<i class="fas fa-redo-alt"></i>
 				</button>
 				<div class="search-box">
@@ -142,7 +143,7 @@ export default function ProxyFrame() {
 						{translate('frame.noBookmarks')}
 					</p>
 				</FrameMenu>
-				<div title="Settings" class="dropdown-parent">
+				<div title="Cipher Browser settings" class="dropdown-parent">
 					<button
 						class="link-button"
 						type="button"
@@ -154,10 +155,13 @@ export default function ProxyFrame() {
 					<section
 						class="dropdown-settings"
 						tabindex="0"
-						aria-label="Settings menu"
+						aria-label="Cipher Browser settings menu"
 					>
 						<div id="csel">
 							<Settings />
+							<div class="settings-content" style="padding:12px 18px;border-top:1px solid var(--line,#455142)">
+								<a href="/cipher/manage" class="cipher-manage-link"><i class="fas fa-shield-alt" aria-hidden="true"></i> Browsing Code, remembered devices &amp; sign out</a>
+							</div>
 						</div>
 					</section>
 				</div>

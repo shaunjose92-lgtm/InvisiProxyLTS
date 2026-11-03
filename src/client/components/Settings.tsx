@@ -8,10 +8,12 @@ import {
 
 export default function Settings() {
 	return (
-		<div class="settings-content">
+		<div class="settings-content cipher-settings-content">
 			<div class="settings-header">
-				<div>
-					<p class="cseltitle-main">{translate('settings.title')}</p>
+				<div class="cipher-settings-heading">
+					<span class="cipher-mark-small" aria-hidden="true">C</span>
+					<p class="cseltitle-main">Cipher Browser Settings</p>
+					<p class="cipher-settings-subtitle">Your browser. Your preferences. All the original controls.</p>
 				</div>
 				<button
 					type="button"
@@ -272,7 +274,6 @@ export default function Settings() {
 								'settings.privacy.hideAdsDescription'
 							)}
 							class="hideads"
-							checked
 						/>
 						{!values.patreon && (
 							<SettingToggle

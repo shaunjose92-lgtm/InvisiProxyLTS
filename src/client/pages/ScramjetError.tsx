@@ -78,7 +78,7 @@ export default function ScramjetError() {
 				</code>
 				<p class="footer-spacing">
 					<i>
-						{`InvisiProxy LTS © 2020-2026 | ${translate('scramjetError.love')} `}
+						{`InvisiProxy LTS (upstream, AGPL-3.0) © 2020-2026 | ${translate('scramjetError.love')} `}
 					</i>
 					<i class="nf nf-fa-heart"></i>
 				</p>

@@ -10,11 +10,11 @@ export default function Footer() {
 							href={route('/')}
 							title={translate('footer.homeTitle')}
 						>
-							InvisiProxy
+							Cipher Browser
 						</a>
 					</h3>
 					<p>{translate('footer.tagline')}</p>
-					<div class="logo-potato"></div>
+					<p class="cipher-upstream-credit">Built on <a href="https://github.com/QuiteAFancyEmerald/InvisiProxy" target="_blank" rel="noopener noreferrer">InvisiProxy LTS</a> (AGPL-3.0). Independent Cipher branding; original authors credited.</p>
 				</div>
 				<div class="footerlist">
 					<h3>{translate('footer.dependencies')}</h3>
