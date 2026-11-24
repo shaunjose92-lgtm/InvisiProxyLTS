@@ -16,17 +16,25 @@
       const ok = () => { if (navigator.serviceWorker.controller) { clearTimeout(t); res(); } };
       navigator.serviceWorker.addEventListener('controllerchange', ok); ok();
     });
+    const worker = navigator.serviceWorker.controller || reg.active || (await navigator.serviceWorker.ready).active;
+    if (!worker) {
+      let done = 0; try { done = sessionStorage.getItem('cbsw'); } catch (_) {}
+      if (!done) { try { sessionStorage.setItem('cbsw', '1'); } catch (_) {} location.reload(); await new Promise(() => {}); }
+      throw new Error('Service worker did not start. Clear this site\u2019s data and reload.');
+    }
+    try { sessionStorage.removeItem('cbsw'); } catch (_) {}
+    return worker;
   }
   window.initBootstrap = async function () {
     await load('/scram/scramjet.js');
     await load('/controller/controller.api.js');
-    await sw();
+    const worker = await sw();
     const { default: LibcurlClient } = await import('/libcurl/index.mjs');
     const wisp = (location.protocol === 'https:' ? 'wss' : 'ws') + '://' + location.host + '/wisp/';
     const transport = new LibcurlClient({ wisp });
     await transport.init();
     const c = new $scramjetController.Controller({
-      serviceworker: navigator.serviceWorker.controller,
+      serviceworker: worker,
       transport,
       config: { prefix: '/scramjet/', scramjetPath: '/scram/scramjet.js', wasmPath: '/scram/scramjet.wasm' }
     });
