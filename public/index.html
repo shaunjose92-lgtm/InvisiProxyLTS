@@ -37,7 +37,14 @@ async function boot(){if(ready)return ready;return ready=(async()=>{try{
 st("Starting browser engine…");
 if(!("serviceWorker" in navigator))throw new Error("This browser blocks service workers (private mode?).");
 if(typeof initBootstrap==="undefined")throw new Error("Engine script failed to load (/bootstrap-init.js).");
-ctl=await initBootstrap();st("")}catch(e){ready=null;st("Engine error: "+(e&&e.message||e),1);throw e}})()}
+try{for(const r of await navigator.serviceWorker.getRegistrations()){if(!r.active||!/\/sw\.js$/.test(r.active.scriptURL))await r.unregister()}}catch{}
+ctl=await initBootstrap();
+if(!navigator.serviceWorker.controller){await Promise.race([navigator.serviceWorker.ready,new Promise(r=>setTimeout(r,4000))]);
+if(!navigator.serviceWorker.controller){let done=0;try{done=sessionStorage.getItem("cbsr")}catch{}
+if(!done){try{sessionStorage.setItem("cbsr","1")}catch{}st("Finishing setup…");location.reload();await new Promise(()=>{})}
+throw new Error("Service worker is not controlling this page. Clear this site's data (lock icon → Site settings → Clear data) and reload.")}}
+try{sessionStorage.removeItem("cbsr")}catch{}
+st("")}catch(e){ready=null;st("Engine error: "+(e&&e.message||e),1);throw e}})()}
 const norm=v=>{v=v.trim();if(/^https?:\/\//i.test(v))return v;if(/^[\w-]+(\.[\w-]+)+(\/.*)?$/.test(v))return"https://"+v;api("data/searches",J({query:v}));return"https://duckduckgo.com/?q="+encodeURIComponent(v)};
 const save=()=>api("tabs",{method:"PUT",body:JSON.stringify({tabs:tabs.map(t=>({url:t.url,title:t.title}))})});
 function draw(){$("start").classList.toggle("on",!tabs[cur]||!tabs[cur].url);$("tabs").innerHTML="";tabs.forEach((t,i)=>{const d=document.createElement("div");d.className="tab"+(i==cur?" on":"");d.textContent=t.title||t.url||"New tab";d.onclick=()=>{cur=i;draw()};d.oncontextmenu=e=>{e.preventDefault();close(i)};$("tabs").append(d);t.f.classList.toggle("on",i==cur)});const p=document.createElement("div");p.className="tab";p.textContent="+";p.onclick=()=>open("");$("tabs").append(p);$("url").value=tabs[cur]?.url||""}
