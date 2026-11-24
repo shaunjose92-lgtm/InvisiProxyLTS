@@ -20,49 +20,84 @@ button.p{background:var(--sage);color:#fff;border-color:var(--sage);height:42px;
 #start{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;background:var(--bg);z-index:3}#start.on{display:flex}
 #start h1{font:700 clamp(40px,7vw,64px)/1.05 var(--display);letter-spacing:-.035em;margin:0}#start p{color:var(--text-dim);margin:0}#start input{max-width:560px;height:48px;border-radius:999px;padding:0 20px;margin:0}
 .tiles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:620px}.tile{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 18px;cursor:pointer;min-width:120px}.tile:hover{border-color:var(--sage);background:var(--sage-soft)}
-#side{position:absolute;right:10px;top:8px;width:340px;max-height:70%;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 12px;display:none;z-index:5;box-shadow:0 18px 40px -20px rgba(0,0,0,.4)}
+#side{position:absolute;right:10px;top:8px;width:340px;max-height:70%;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 12px;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px) scale(.98);transform-origin:top right;transition:opacity .2s,transform .22s cubic-bezier(.2,.8,.2,1),visibility 0s .22s;z-index:5;box-shadow:0 18px 40px -20px rgba(0,0,0,.4)}
 #side h3{font:700 20px var(--display);margin:6px 0;display:flex;justify-content:space-between;align-items:center}#side h3 button{font-size:12px;height:26px}
 .row{display:flex;align-items:center;gap:6px;padding:7px 0;border-top:1px solid var(--line)}.row span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}.row button{height:24px;min-width:24px;padding:0}
 #pbar{position:fixed;left:0;top:0;height:2px;background:var(--sage);width:0;transition:width .4s;z-index:70}
-#status{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:55;max-width:90%;padding:9px 16px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:13px;display:none}#status.err{border-color:var(--bad);color:var(--bad)}
+#status{position:fixed;left:50%;bottom:16px;transform:translate(-50%,10px);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 12px 30px -16px rgba(0,0,0,.4);z-index:55;max-width:90%;padding:9px 16px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:13px}#status.show{opacity:1;transform:translate(-50%,0)}#status.err{border-color:var(--bad);color:var(--bad)}
 #err{color:var(--bad);min-height:20px;font-size:13px}
 /* full-screen Cipher loading / error screen */
-#ld{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;background:radial-gradient(circle at 50% 30%,var(--bg-2),var(--bg) 70%)}#ld.on{display:flex}
-.ring{width:88px;height:88px;border-radius:28px;background:var(--sage-soft);color:var(--sage);display:grid;place-items:center;position:relative}.ring svg{width:44px;height:44px}
-.ring:after{content:"";position:absolute;inset:-9px;border-radius:34px;border:2px solid transparent;border-top-color:var(--sage);animation:sp 1.1s linear infinite}#ld.err .ring:after{display:none}#ld.err .ring{background:rgba(192,80,77,.14);color:var(--bad)}
-@keyframes sp{to{transform:rotate(360deg)}}
-#ld h1{font:700 clamp(26px,5vw,42px)/1.15 var(--display);letter-spacing:-.035em;margin:0;display:flex;justify-content:center;gap:.3em;max-width:min(90vw,780px)}#ldH{flex:none;white-space:nowrap}#ldT{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#ldM{max-width:560px;min-height:1px;color:var(--text-dim);line-height:1.6;margin:0}
-#ldD{display:none;max-width:560px;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-size:13px;line-height:1.7}#ldD code{display:block;margin-top:6px;color:var(--text-dim);word-break:break-word;max-height:90px;overflow:auto;font:12px ui-monospace,monospace}
-.ldb{display:flex;gap:10px}.ldb button{height:38px}#ldB2{display:none}#ld.err #ldB2{display:inline-block}
-.ldf{position:absolute;bottom:22px;display:flex;align-items:center;gap:8px;color:var(--text-dim)}.ldf .bi{width:22px;height:22px;border-radius:7px}.ldf .bi svg{width:14px;height:14px}
+#ld{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:24px;text-align:center;overflow:hidden;background:radial-gradient(65% 55% at 18% 12%,var(--sage-soft),transparent 70%),radial-gradient(55% 50% at 88% 90%,var(--sage-soft),transparent 72%),linear-gradient(160deg,var(--bg),var(--bg-2))}
+#ld.on{display:flex;animation:ldin .35s ease both}
+#ld:before,#ld:after{content:"";position:absolute;border-radius:50%;pointer-events:none;filter:blur(60px);opacity:.6;background:var(--sage-soft)}
+#ld:before{width:340px;height:340px;left:-80px;top:-60px;animation:drift 14s ease-in-out infinite alternate}
+#ld:after{width:300px;height:300px;right:-70px;bottom:-60px;animation:drift 17s ease-in-out infinite alternate-reverse}
+#ld>*:not(.ldf){position:relative;z-index:1}
+.ring{width:104px;height:104px;border-radius:32px;background:var(--paper);border:1px solid var(--line);color:var(--sage);display:grid;place-items:center;position:relative;box-shadow:0 30px 60px -28px rgba(0,0,0,.35),0 0 0 8px var(--sage-soft);animation:float 3.2s ease-in-out infinite}
+.ring svg{width:48px;height:48px}
+.ring:after{content:"";position:absolute;inset:-14px;border-radius:42px;border:2px solid transparent;border-top-color:var(--sage);border-right-color:var(--sage);opacity:.85;animation:sp 1.4s cubic-bezier(.5,.1,.5,.9) infinite}
+#ld.err .ring:after{display:none}#ld.err .ring{color:var(--bad);box-shadow:0 30px 60px -28px rgba(0,0,0,.35),0 0 0 8px rgba(192,80,77,.12);animation:none}
+.track{width:min(240px,60vw);height:4px;border-radius:99px;background:var(--panel-2);overflow:hidden}.track i{display:block;height:100%;width:40%;border-radius:99px;background:linear-gradient(90deg,transparent,var(--sage),transparent);animation:slide 1.5s ease-in-out infinite}#ld.err .track{display:none}
+@keyframes sp{to{transform:rotate(360deg)}}@keyframes slide{from{transform:translateX(-120%)}to{transform:translateX(280%)}}@keyframes float{50%{transform:translateY(-6px)}}@keyframes drift{to{transform:translate(50px,40px) scale(1.15)}}@keyframes ldin{from{opacity:0}to{opacity:1}}
+#ld h1{font:700 clamp(28px,5vw,46px)/1.1 var(--display);letter-spacing:-.035em;margin:4px 0 0;display:flex;justify-content:center;align-items:baseline;gap:.3em;max-width:min(90vw,780px)}#ldH{flex:none;white-space:nowrap}#ldT{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ldM{max-width:520px;min-height:1px;color:var(--text-dim);line-height:1.65;margin:0;animation:ldin .6s ease both}
+#ldD{display:none;max-width:560px;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 16px;font-size:13px;line-height:1.7;box-shadow:0 18px 40px -26px rgba(0,0,0,.4)}#ldD code{display:block;margin-top:6px;color:var(--text-dim);word-break:break-word;max-height:90px;overflow:auto;font:12px ui-monospace,monospace}
+.ldb{display:flex;gap:10px}.ldb button{height:40px;border-radius:999px;padding:0 20px;border-color:var(--line);background:var(--paper)}.ldb button.p{background:var(--sage);border-color:var(--sage);color:#fff}#ldB2{display:none}#ld.err #ldB2{display:inline-block}
+.ldf{position:absolute;bottom:22px;z-index:1;display:flex;align-items:center;gap:8px;color:var(--text-dim);opacity:.8}.ldf .bi{width:22px;height:22px;border-radius:7px}.ldf .bi svg{width:14px;height:14px}
+@media(prefers-reduced-motion:reduce){#ld,#ld:before,#ld:after,#ld *{animation:none!important}}
+
+/* ---- motion & minimise ---- */
+button{transition:background .15s,color .15s,border-color .15s,transform .1s,filter .15s}button:active{transform:scale(.94)}
+#login{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}#login.shake{animation:shake .38s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}@keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+#app.in{animation:ldin .45s ease both}
+#chrome{display:grid;grid-template-rows:1fr;transition:grid-template-rows .35s cubic-bezier(.4,0,.2,1),opacity .25s,visibility 0s}#chrome>div{overflow:hidden;min-height:0}
+body.min #chrome{grid-template-rows:0fr;opacity:0;visibility:hidden;transition:grid-template-rows .35s cubic-bezier(.4,0,.2,1),opacity .25s,visibility 0s .35s}
+#rest{position:fixed;top:0;left:50%;z-index:50;height:22px;min-width:58px;padding:0 14px;border-radius:0 0 14px 14px;background:var(--paper);border:1px solid var(--line);border-top:0;color:var(--text-dim);opacity:.4;display:grid;place-items:center;transform:translate(-50%,-110%);transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s,height .2s}
+body.min #rest{transform:translate(-50%,0)}#rest:hover{opacity:1;height:28px;background:var(--paper);color:var(--text)}
+#wm{position:fixed;right:14px;bottom:12px;z-index:45;display:flex;align-items:center;gap:6px;padding:5px 11px 5px 6px;border-radius:999px;background:rgba(20,18,14,.34);color:#fff;font:600 12px/1 var(--display);letter-spacing:-.01em;opacity:0;transform:translateY(6px);pointer-events:none;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:opacity .45s,transform .45s}
+body.min #wm{opacity:.5;transform:none}#wm .bi{width:16px;height:16px;border-radius:5px;box-shadow:none}#wm .bi svg{width:11px;height:11px}
+.tab.in{animation:tabin .26s cubic-bezier(.2,.8,.2,1) both}.tab.out{animation:tabout .18s ease forwards;pointer-events:none;overflow:hidden}
+@keyframes tabin{from{opacity:0;transform:translateY(8px) scale(.92)}}@keyframes tabout{to{opacity:0;transform:translateY(6px) scale(.9);min-width:0;max-width:0;padding:0;margin-right:-4px}}
+.tab{transition:background .15s,color .15s}.tab.add:hover{background:var(--sage-soft);color:var(--sage)}
+#start.on{animation:ldin .35s ease both}#frames>iframe.on{animation:ldin .25s ease both}
+.tile{transition:transform .15s,border-color .15s,background .15s,box-shadow .15s}.tile:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px rgba(0,0,0,.4)}.tile:active{transform:scale(.97)}
+#side.on{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition:opacity .2s,transform .22s cubic-bezier(.2,.8,.2,1),visibility 0s}
+.row{animation:rowin .28s cubic-bezier(.2,.8,.2,1) both}.row.gone{animation:rowout .18s ease forwards}
+@keyframes rowin{from{opacity:0;transform:translateX(10px)}}@keyframes rowout{to{opacity:0;transform:translateX(-12px)}}
+.row.sk{animation:none;height:34px}.row.sk i{display:block;height:12px;width:100%;border-radius:6px;background:linear-gradient(90deg,var(--panel-2),var(--sage-soft),var(--panel-2));background-size:200% 100%;animation:shim 1.1s linear infinite}
+@keyframes shim{to{background-position:-200% 0}}
+#bm.on{color:var(--sage)}#bm.pop{animation:pop .35s cubic-bezier(.3,1.6,.5,1)}@keyframes pop{40%{transform:scale(1.45)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style></head><body>
 <div id="pbar"></div>
 <div class="title" id="ltitle"><div class="brand"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bt">Cipher <em>Browser</em></span></div></div>
 <div id="login"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h2>Cipher <em>Browser</em></h2><p>Enter your Browser Login Code from your Cipher account.</p><input id="code" placeholder="CB-XXXXXXXXXXXXXXXXXXXXXXXX" autocomplete="off" spellcheck="false"><div id="err"></div><button class="p" id="go">Sign in</button></div>
 <div id="app">
-<div class="title"><div class="brand"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bt">Cipher <em>Browser</em></span></div></div>
+<div id="chrome"><div><div class="title"><div class="brand"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bt">Cipher <em>Browser</em></span></div></div>
 <div class="tabs" id="tabs"></div>
-<div class="bar"><button id="back" title="Back">‹</button><button id="fwd" title="Forward">›</button><button id="rel" title="Reload">⟳</button><input id="url" placeholder="Search or enter address" autocomplete="off" spellcheck="false"><button id="bm" title="Bookmark">☆</button><button id="hist">History</button><button id="bks">Bookmarks</button><button id="out">Sign out</button></div>
-<div id="frames"><div id="start" class="on"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h1>Cipher <em>Browser</em></h1><p>Search the web or enter an address.</p><input id="sq" placeholder="Search or enter address" autocomplete="off"><div class="tiles"><div class="tile" data-u="https://www.google.com">Google</div><div class="tile" data-u="https://www.youtube.com">YouTube</div><div class="tile" data-u="https://www.reddit.com">Reddit</div><div class="tile" data-u="https://www.crazygames.com">CrazyGames</div><div class="tile" data-u="https://www.wikipedia.org">Wikipedia</div></div></div><div id="side"></div></div>
+<div class="bar"><button id="back" title="Back">‹</button><button id="fwd" title="Forward">›</button><button id="rel" title="Reload">⟳</button><input id="url" placeholder="Search or enter address" autocomplete="off" spellcheck="false"><button id="bm" title="Bookmark">☆</button><button id="hist">History</button><button id="bks">Bookmarks</button><button id="mini" title="Hide toolbar and tabs (Alt+H)">Minimise</button><button id="out">Sign out</button></div></div></div>
+<div id="frames"><div id="start" class="on"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h1>Cipher <em>Browser</em></h1><p>Search the web or enter an address.</p><input id="sq" placeholder="Search or enter address" autocomplete="off"><div class="tiles"><div class="tile" data-u="https://duckduckgo.com">DuckDuckGo</div><div class="tile" data-u="https://www.youtube.com">YouTube</div><div class="tile" data-u="https://www.reddit.com">Reddit</div><div class="tile" data-u="https://www.crazygames.com">CrazyGames</div><div class="tile" data-u="https://www.wikipedia.org">Wikipedia</div></div></div><div id="side"></div></div>
 </div>
 <div id="ld"><div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div>
-<h1><span id="ldH">Loading</span><em id="ldT"></em></h1><p id="ldM"></p><div id="ldD"></div>
+<h1><span id="ldH">Opening</span><em id="ldT"></em></h1><div class="track"><i></i></div><p id="ldM"></p><div id="ldD"></div>
 <div class="ldb"><button id="ldB2" class="p">Try again</button><button id="ldB1">Cancel</button></div>
 <div class="ldf"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bt" style="font-size:15px">Cipher <em>Browser</em></span></div></div>
+<button id="rest" title="Show toolbar (Alt+H)" aria-label="Show toolbar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+<div id="wm"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span>Cipher</div>
 <div id="status"></div>
 <script src="/bootstrap-init.js"></script>
 <script>
 const $=i=>document.getElementById(i),api=(p,o={})=>fetch("/api/"+p,{credentials:"same-origin",headers:{"Content-Type":"application/json"},...o}),J=b=>({method:"POST",body:JSON.stringify(b)});
-const ENG=["https://www.google.com/search?q=","https://www.bing.com/search?q=","https://duckduckgo.com/?q="];
+const ENG=["https://duckduckgo.com/?q=","https://www.bing.com/search?q="];
 const M1="Huh... Lots of people from Cipher are on here. Don’t worry, our servers are working hard. Give us a sec...";
 const M2="Okay. No, we do see your request to enter but there’s just too many people on here that it’s making the server strain. We’re not blaming you but we understand that you could be impatient.";
 let ctl,tabs=[],cur=0,ready,bms=[],L={t:null,start:0,timers:[],retry:null};
-const st=(m,e)=>{const x=$("status");x.textContent=m||"";x.className=e?"err":"";x.style.display=m?"block":"none";if(m)setTimeout(()=>{if(x.textContent===m)x.style.display="none"},4000)};
+const st=(m,e)=>{const x=$("status");if(!m){x.classList.remove("show");return}x.textContent=m;x.className=(e?"err ":"")+"show";clearTimeout(st.t);st.t=setTimeout(()=>x.classList.remove("show"),3200)};
 const short=(s,n=60)=>{s=String(s||"");return s.length>n?s.slice(0,n-1)+"…":s};
 const host=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch{return u}};
 /* ---- full-screen loading / error screen ---- */
-function ld(mode,title,retry){clearT();$("ld").className="on"+(mode=="err"?" err":"");$("ldH").textContent=mode=="err"?"We couldn’t load":"Loading";$("ldT").textContent=short(title);$("ldM").textContent="";$("ldD").style.display="none";L.retry=retry||null}
+function ld(mode,title,retry){clearT();$("ld").className="on"+(mode=="err"?" err":"");$("ldH").textContent=mode=="err"?"We couldn’t load":"Opening";$("ldT").textContent=short(title);$("ldM").textContent="";$("ldD").style.display="none";L.retry=retry||null}
 function clearT(){L.timers.forEach(clearTimeout);L.timers=[]}
 function hideLd(){clearT();L.t=null;$("ld").className=""}
 function showLoad(t){L.t=t;L.start=Date.now();ld("load",t.title||host(t.url));
@@ -93,12 +128,13 @@ async function boot(){if(ready)return ready;return ready=(async()=>{try{
 /* ---- tabs ---- */
 const bmOf=u=>bms.find(b=>b.url===u);
 function draw(){const t=tabs[cur];$("start").classList.toggle("on",!t||!t.url);$("tabs").innerHTML="";
- tabs.forEach((x,i)=>{const d=document.createElement("div");d.className="tab"+(i==cur?" on":"");const s=document.createElement("span");s.textContent=x.title||"New tab";const c=document.createElement("b");c.textContent="×";c.title="Close tab";c.onclick=e=>{e.stopPropagation();closeTab(i)};d.append(s,c);d.onclick=()=>activate(i);$("tabs").append(d);x.f.classList.toggle("on",i==cur)});
+ tabs.forEach((x,i)=>{const d=document.createElement("div");d.className="tab"+(i==cur?" on":"")+(x.shown?"":" in")+(x.closing?" out":"");x.shown=true;const s=document.createElement("span");s.textContent=x.title||"New tab";const c=document.createElement("b");c.textContent="×";c.title="Close tab";c.onclick=e=>{e.stopPropagation();closeTab(i)};d.append(s,c);d.onclick=()=>activate(i);$("tabs").append(d);x.f.classList.toggle("on",i==cur)});
  const p=document.createElement("div");p.className="tab add";p.textContent="+";p.title="New tab";p.onclick=()=>openTab("");$("tabs").append(p);
- if(document.activeElement!==$("url"))$("url").value=t?t.url:"";$("bm").textContent=t&&t.url&&bmOf(t.url)?"★":"☆"}
+ if(document.activeElement!==$("url"))$("url").value=t?t.url:"";{const on=!!(t&&t.url&&bmOf(t.url));$("bm").textContent=on?"★":"☆";$("bm").classList.toggle("on",on)}}
 const save=()=>api("tabs",{method:"PUT",body:JSON.stringify({tabs:tabs.filter(t=>t.url).map(t=>({url:t.url,title:t.title}))})}).catch(()=>{});
 function activate(i){cur=i;const t=tabs[i];if(t&&t.pend){const u=t.pend;t.pend=null;go(t,u,1)}draw()}
-function closeTab(i){tabs[i].f.remove();tabs.splice(i,1);if(L.t&&!tabs.includes(L.t))hideLd();if(!tabs.length){openTab("");return}cur=Math.min(cur,tabs.length-1);activate(cur);save()}
+function closeTab(i){const x=tabs[i];if(!x||x.closing)return;x.closing=1;const el=$("tabs").children[i];if(el)el.classList.add("out");
+ setTimeout(()=>{const k=tabs.indexOf(x);if(k<0)return;x.f.remove();tabs.splice(k,1);if(L.t&&!tabs.includes(L.t))hideLd();if(!tabs.length){openTab("");return}cur=Math.min(cur>k?cur-1:cur,tabs.length-1);activate(cur);save()},170)}
 
 /* ---- per-frame plugins: URL watcher, cache, ad/tracker blocking, Cipher error page ---- */
 const ADS=/(^|\.)(doubleclick\.net|googlesyndication\.com|googleadservices\.com|adsafeprotected\.com|sharethrough\.com|adnxs\.com|pubmatic\.com|rubiconproject\.com|criteo\.(com|net)|3lift\.com|amazon-adsystem\.com|moatads\.com|doubleverify\.com|adform\.net|openx\.net|casalemedia\.com|taboola\.com|outbrain\.com|google-analytics\.com|scorecardresearch\.com|yieldmo\.com|smaato\.net|media\.net|indexww\.com|contextweb\.com|bidswitch\.net|adsrvr\.org|teads\.tv|ads\.pubmatic\.com)$/i;
@@ -106,7 +142,6 @@ const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const errPage=(url,err)=>`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cipher Browser</title><style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+4:wght@700&display=swap');:root{color-scheme:light dark}body{margin:0;min-height:100vh;display:grid;place-items:center;text-align:center;padding:24px;box-sizing:border-box;background:#f4f1e9;color:#2b2620;font:15px Inter,system-ui,sans-serif}@media(prefers-color-scheme:dark){body{background:#2a2620;color:#ede5d4}}.b{width:72px;height:72px;margin:0 auto 20px;border-radius:22px;background:rgba(192,80,77,.14);color:#c0504d;display:grid;place-items:center;font:700 32px Georgia,serif}h1{font:700 32px/1.15 'Source Serif 4',Georgia,serif;letter-spacing:-.035em;margin:0 0 10px}h1 em{color:#7a8a62}p{opacity:.7;max-width:480px;margin:0 auto 14px;line-height:1.6}code{display:block;max-width:520px;margin:0 auto;padding:12px 16px;border-radius:14px;background:rgba(122,138,98,.14);font:12px ui-monospace,monospace;word-break:break-word;text-align:left}</style><div><div class="b">!</div><h1>We couldn’t load <em>this page</em></h1><p>Something got in the way. Here’s what the Cipher server told us.</p><code>${esc(url)}<br>${esc(err)}</code></div>`;
 function mkPlugins(t){const pl=[];
  try{pl.push(new $scramjetUtils.UrlWatcherPlugin(x=>{const h=String(x);if(t.armed&&h&&h!==t.url){t.url=h;$("pbar").style.width="70%";draw();save()}}))}catch(e){console.warn("UrlWatcher",e)}
- try{pl.push(new $scramjetUtils.HttpCachePlugin())}catch(e){console.warn("HttpCache",e)}
  try{const {ManagedPlugin}=$scramjetController;
   class CipherPlugin extends ManagedPlugin{constructor(){super("cipher-plugin",[])}
    install(frame){super.install(frame);
@@ -144,23 +179,32 @@ $("fwd").onclick=()=>{try{tabs[cur].f.contentWindow.history.forward()}catch{}};
 $("rel").onclick=()=>{const t=tabs[cur];if(t&&t.url)go(t,t.url)};
 $("bm").onclick=async()=>{const t=tabs[cur];if(!t||!t.url)return;const b=bmOf(t.url);
  if(b)await api("data/bookmarks?id="+b.id,{method:"DELETE"});else await api("data/bookmarks",J({url:t.url,title:t.title}));
- await loadBms();draw();st(b?"Bookmark removed":"Bookmarked")};
+ await loadBms();draw();{const e=$("bm");e.classList.remove("pop");void e.offsetWidth;e.classList.add("pop")}st(b?"Bookmark removed":"Bookmarked")};
 async function loadBms(){try{bms=await(await api("data/bookmarks")).json();if(!Array.isArray(bms))bms=[]}catch{bms=[]}}
-async function panel(k){const s=$("side");if(s.style.display=="block"&&s.dataset.k==k){s.style.display="none";return}
- s.dataset.k=k;let r=[];try{r=await(await api("data/"+k)).json()}catch{}if(!Array.isArray(r))r=[];
- s.innerHTML="";const h=document.createElement("h3");h.textContent=k=="history"?"History":"Bookmarks";
- if(k=="history"&&r.length){const c=document.createElement("button");c.textContent="Clear all";c.onclick=async()=>{await api("data/history",{method:"DELETE"});s.style.display="none";panel(k)};h.append(c)}s.append(h);
- r.forEach(x=>{const d=document.createElement("div");d.className="row";const a=document.createElement("span");a.textContent=x.title||x.url;a.title=x.url;a.onclick=()=>{s.style.display="none";submit(x.url)};
-  const z=document.createElement("button");z.textContent="×";z.title="Remove";z.onclick=async()=>{await api("data/"+k+"?id="+x.id,{method:"DELETE"});if(k=="bookmarks"){await loadBms();draw()}d.remove()};d.append(a,z);s.append(d)});
- if(!r.length){const e=document.createElement("div");e.className="row";e.textContent="Nothing here yet.";s.append(e)}s.style.display="block"}
+async function panel(k){const s=$("side");if(s.classList.contains("on")&&s.dataset.k==k){s.classList.remove("on");return}
+ s.dataset.k=k;s.innerHTML="";const h=document.createElement("h3");h.textContent=k=="history"?"History":"Bookmarks";s.append(h);
+ const sk=document.createElement("div");for(let n=0;n<4;n++){const r=document.createElement("div");r.className="row sk";r.innerHTML="<i></i>";sk.append(r)}s.append(sk);s.classList.add("on");
+ let r=[];try{r=await(await api("data/"+k)).json()}catch{}if(!Array.isArray(r))r=[];
+ if(s.dataset.k!==k||!s.classList.contains("on"))return;sk.remove();
+ const empty=()=>{const e=document.createElement("div");e.className="row";e.textContent="Nothing here yet.";s.append(e)};
+ if(k=="history"&&r.length){const c=document.createElement("button");c.textContent="Clear all";c.onclick=async()=>{await api("data/history",{method:"DELETE"});c.remove();s.querySelectorAll(".row").forEach(x=>{x.classList.add("gone");setTimeout(()=>x.remove(),180)});setTimeout(empty,200)};h.append(c)}
+ r.forEach((x,n)=>{const d=document.createElement("div");d.className="row";d.style.animationDelay=Math.min(n,12)*28+"ms";const a=document.createElement("span");a.textContent=x.title||x.url;a.title=x.url;a.onclick=()=>{s.classList.remove("on");submit(x.url)};
+  const z=document.createElement("button");z.textContent="×";z.title="Remove";z.onclick=async()=>{await api("data/"+k+"?id="+x.id,{method:"DELETE"});if(k=="bookmarks"){await loadBms();draw()}d.classList.add("gone");setTimeout(()=>d.remove(),180)};d.append(a,z);s.append(d)});
+ if(!r.length)empty()}
+document.addEventListener("pointerdown",e=>{if(!e.target.closest("#side,#hist,#bks"))$("side").classList.remove("on")});
 $("hist").onclick=()=>panel("history");$("bks").onclick=()=>panel("bookmarks");
 $("out").onclick=async()=>{await api("logout",{method:"POST"});location.reload()};
-async function enter(){$("ltitle").style.display="none";$("login").style.display="none";$("app").style.display="flex";
+async function enter(){$("ltitle").style.display="none";$("login").style.display="none";$("app").style.display="flex";$("app").classList.add("in");
  try{await boot()}catch{return}await loadBms();
  let r=[];try{r=await(await api("tabs")).json()}catch{}if(!Array.isArray(r))r=[];
  if(!r.length){await openTab("");return}
  for(const x of r)await openTab(x.url,x.title,true);activate(0)}
-$("go").onclick=async()=>{$("err").textContent="";const r=await api("login",J({code:$("code").value}));if(r.ok)enter();else $("err").textContent=r.status==429?"Too many attempts. Try again in a few minutes.":"Invalid or expired code."};
+$("go").onclick=async()=>{const b=$("go");if(b.disabled)return;$("err").textContent="";b.disabled=true;b.textContent="Signing in…";let r;try{r=await api("login",J({code:$("code").value}))}catch{r={ok:false,status:0}}b.disabled=false;b.textContent="Sign in";
+ if(r.ok)enter();else{$("err").textContent=r.status==429?"Too many attempts. Try again in a few minutes.":"Invalid or expired code.";const l=$("login");l.classList.remove("shake");void l.offsetWidth;l.classList.add("shake")}};
+/* ---- minimise (hide toolbar + tabs, show faded Cipher watermark) ---- */
+function mini(on){document.body.classList.toggle("min",on);if(on)st("Minimised. Press Alt+H or use the tab at the top to bring it back.")}
+$("mini").onclick=()=>mini(true);$("rest").onclick=()=>mini(false);
+addEventListener("keydown",e=>{if(e.altKey&&String(e.key).toLowerCase()=="h"&&$("app").style.display=="flex"){e.preventDefault();mini(!document.body.classList.contains("min"))}});
 $("code").onkeydown=e=>{if(e.key=="Enter")$("go").click()};
 api("me").then(r=>{if(r.ok)enter()}).catch(()=>{});
 </script></body></html>
