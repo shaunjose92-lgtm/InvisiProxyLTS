@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 import path from "node:path";
 const require = createRequire(import.meta.url);
-const { server: wisp } = require("@mercuryworkshop/wisp-server-node");
+import { server as wisp } from "@mercuryworkshop/wisp-js/server";
 import { scramjetPath } from "@mercuryworkshop/scramjet/path";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 import { libcurlPath } from "@mercuryworkshop/libcurl-transport";
