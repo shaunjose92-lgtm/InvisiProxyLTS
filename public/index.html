@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cipher Browser</title><meta name="theme-color" content="#7a8a62">
+<link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f1e9;--bg-2:#ede5d4;--paper:#fbf8f1;--panel-2:rgba(43,38,32,.065);--text:#2b2620;--text-dim:#6a6358;--line:#e3dcc9;--sage:#7a8a62;--sage-soft:rgba(122,138,98,.16);--display:'Source Serif 4','Iowan Old Style','Palatino Linotype',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#2a2620;--bg-2:#1f1c17;--paper:#2f2a23;--panel-2:rgba(237,229,212,.065);--text:#ede5d4;--text-dim:#a39a8a;--line:#3a342c;--sage:#97a67d;--sage-soft:rgba(151,166,125,.16)}}
+*{box-sizing:border-box}html,body{height:100%;margin:0}body{background:var(--bg);color:var(--text);font:15px var(--sans);display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:9px}.bi{width:29px;height:29px;display:grid;place-items:center;background:var(--sage);color:#fff;border-radius:9px;box-shadow:0 4px 14px -6px var(--sage)}.bi svg{width:19px;height:19px}.bt{font:600 18px/1 var(--display);letter-spacing:-.035em;white-space:nowrap}.bt em{font-style:italic;color:var(--sage);font-weight:600}
+.title{display:flex;align-items:center;gap:12px;min-height:51px;padding:8px 17px;background:linear-gradient(130deg,var(--paper),var(--bg-2));border-bottom:1px solid var(--line)}.title .sp{flex:1}
+#login{margin:auto;width:min(450px,92%);text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:34px 28px;box-shadow:0 24px 60px -30px rgba(0,0,0,.35)}
+.mark{width:70px;height:70px;border-radius:22px;background:var(--sage-soft);color:var(--sage);display:grid;place-items:center;margin:0 auto 22px}.mark svg{width:37px;height:37px}
+#login h2{font:700 38px/1.05 var(--display);letter-spacing:-.035em;margin:0 0 10px}#login h2 em{font-style:italic;color:var(--sage)}#login p{color:var(--text-dim);line-height:1.55;margin:0}
+input,button{font:inherit;color:inherit}input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);margin:16px 0 8px;outline:0}input:focus{border-color:var(--sage)}
+button{border:1px solid transparent;background:transparent;color:var(--text-dim);border-radius:10px;min-width:35px;height:33px;padding:0 10px;cursor:pointer}button:hover{background:var(--panel-2);color:var(--text);border-color:var(--line)}
+button.p{background:var(--sage);color:#fff;border-color:var(--sage);height:42px;width:100%;border-radius:12px;font-weight:600}button.p:hover{background:var(--sage);color:#fff;filter:brightness(1.06)}
+#app{display:none;flex:1;flex-direction:column;min-height:0}.bar{display:flex;gap:5px;padding:8px;border-bottom:1px solid var(--line);background:var(--paper);align-items:center}.bar input{margin:0;padding:0 14px;height:34px;flex:1;border-radius:999px}
+.tabs{display:flex;gap:4px;padding:6px 8px 0;overflow:auto;background:var(--bg-2)}.tab{min-width:118px;max-width:210px;height:32px;line-height:30px;padding:0 12px;border-radius:12px 12px 0 0;background:var(--panel-2);color:var(--text-dim);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tab.on{background:var(--paper);color:var(--text)}
+#frames{flex:1;position:relative}#frames>*{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff;display:none}#frames>.on{display:block}
+#side{position:absolute;right:10px;top:132px;width:310px;max-height:60%;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 12px;display:none;z-index:5;box-shadow:0 18px 40px -20px rgba(0,0,0,.4)}#side div{padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#err{color:#c0504d;min-height:20px;font-size:13px}
+</style></head><body>
+<div class="title"><div class="brand"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bt">Cipher <em>Browser</em></span></div></div><div id="login"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h2>Cipher <em>Browser</em></h2><p>Enter your Browser Login Code from your Cipher account.</p><input id="code" placeholder="CB-XXXXXXXXXXXXXXXXXXXXXXXX" autocomplete="off" spellcheck="false"><div id="err"></div><button class="p" id="go">Sign in</button></div>
+<div id="app"><div class="title"><div class="brand"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bt">Cipher <em>Browser</em></span></div><span class="sp"></span></div><div class="tabs" id="tabs"></div><div class="bar"><button id="back">‹</button><button id="fwd">›</button><button id="rel">⟳</button><input id="url" placeholder="Search or enter address"><button id="bm">☆</button><button id="hist">History</button><button id="bks">Bookmarks</button><button id="out">Sign out</button></div><div id="frames"></div><div id="side"></div></div>
+<script src="/baremux/index.js"></script><script src="/scram/scramjet.all.js"></script>
+<script>
+const $=i=>document.getElementById(i),api=(p,o={})=>fetch("/api/"+p,{credentials:"same-origin",headers:{"Content-Type":"application/json"},...o}),J=b=>({method:"POST",body:JSON.stringify(b)});
+let sj,tabs=[],cur=0,ready;
+async function boot(){if(ready)return ready;return ready=(async()=>{await navigator.serviceWorker.register("/sw.js");
+const {ScramjetController}=$scramjetLoadController();sj=new ScramjetController({prefix:"/service/",files:{wasm:"/scram/scramjet.wasm.wasm",all:"/scram/scramjet.all.js",sync:"/scram/scramjet.sync.js"}});await sj.init();
+const c=new BareMux.BareMuxConnection("/baremux/worker.js");await c.setTransport("/libcurl/index.mjs",[{websocket:(location.protocol=="https:"?"wss":"ws")+"://"+location.host+"/wisp/"}])})()}
+const norm=v=>{v=v.trim();if(/^https?:\/\//i.test(v))return v;if(/^[\w-]+(\.[\w-]+)+(\/.*)?$/.test(v))return"https://"+v;api("data/searches",J({query:v}));return"https://duckduckgo.com/?q="+encodeURIComponent(v)};
+const save=()=>api("tabs",{method:"PUT",body:JSON.stringify({tabs:tabs.map(t=>({url:t.url,title:t.title}))})});
+function draw(){$("tabs").innerHTML="";tabs.forEach((t,i)=>{const d=document.createElement("div");d.className="tab"+(i==cur?" on":"");d.textContent=t.title||t.url||"New tab";d.onclick=()=>{cur=i;draw()};d.oncontextmenu=e=>{e.preventDefault();close(i)};$("tabs").append(d);t.f.classList.toggle("on",i==cur)});const p=document.createElement("div");p.className="tab";p.textContent="+";p.onclick=()=>open("");$("tabs").append(p);$("url").value=tabs[cur]?.url||""}
+function close(i){tabs[i].f.remove();tabs.splice(i,1);if(!tabs.length)return open("");cur=Math.min(cur,tabs.length-1);draw();save()}
+async function open(u){await boot();const f=sj.createFrame();$("frames").append(f.frame);const t={f:f.frame,fr:f,url:"",title:""};tabs.push(t);cur=tabs.length-1;if(u)nav(u);draw()}
+function nav(v){const t=tabs[cur],u=norm(v);t.url=u;t.title=new URL(u).hostname;t.fr.go(u);api("data/history",J({url:u,title:t.title}));draw();save()}
+$("url").onkeydown=e=>{if(e.key=="Enter"&&e.target.value.trim()){if(!tabs.length)open(e.target.value);else nav(e.target.value)}};
+$("back").onclick=()=>tabs[cur]?.f.contentWindow.history.back();$("fwd").onclick=()=>tabs[cur]?.f.contentWindow.history.forward();$("rel").onclick=()=>tabs[cur]?.fr.go(tabs[cur].url);
+$("bm").onclick=()=>tabs[cur]?.url&&api("data/bookmarks",J({url:tabs[cur].url,title:tabs[cur].title}));
+async function panel(k){const s=$("side");if(s.style.display=="block"&&s.dataset.k==k){s.style.display="none";return}s.dataset.k=k;const r=await(await api("data/"+k)).json();s.innerHTML="";r.forEach(x=>{const d=document.createElement("div");d.textContent=x.title||x.url;d.title=x.url;d.onclick=()=>{s.style.display="none";tabs.length?nav(x.url):open(x.url)};s.append(d)});if(!r.length)s.textContent="Nothing yet.";s.style.display="block"}
+$("hist").onclick=()=>panel("history");$("bks").onclick=()=>panel("bookmarks");
+$("out").onclick=async()=>{await api("logout",{method:"POST"});location.reload()};
+async function enter(){$("login").style.display="none";$("app").style.display="flex";await boot();const r=await(await api("tabs")).json();(r.length?r:[{url:""}]).forEach(t=>open(t.url||""))}
+$("go").onclick=async()=>{const r=await api("login",J({code:$("code").value}));if(r.ok)enter();else $("err").textContent=r.status==429?"Too many attempts.":"Invalid or expired code."};
+$("code").onkeydown=e=>e.key=="Enter"&&$("go").click();
+api("me").then(r=>r.ok&&enter());
+</script></body></html>
