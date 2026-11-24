@@ -77,7 +77,7 @@ body.min #wm{opacity:.5;transform:none}#wm .bi{width:16px;height:16px;border-rad
 <div id="chrome"><div><div class="title"><div class="brand"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bt">Cipher <em>Browser</em></span></div></div>
 <div class="tabs" id="tabs"></div>
 <div class="bar"><button id="back" title="Back">‹</button><button id="fwd" title="Forward">›</button><button id="rel" title="Reload">⟳</button><input id="url" placeholder="Search or enter address" autocomplete="off" spellcheck="false"><button id="bm" title="Bookmark">☆</button><button id="hist">History</button><button id="bks">Bookmarks</button><button id="mini" title="Hide toolbar and tabs (Alt+H)">Minimise</button><button id="out">Sign out</button></div></div></div>
-<div id="frames"><div id="start" class="on"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h1>Cipher <em>Browser</em></h1><p>Search the web or enter an address.</p><input id="sq" placeholder="Search or enter address" autocomplete="off"><div class="tiles"><div class="tile" data-u="https://duckduckgo.com">DuckDuckGo</div><div class="tile" data-u="https://www.youtube.com">YouTube</div><div class="tile" data-u="https://www.reddit.com">Reddit</div><div class="tile" data-u="https://www.crazygames.com">CrazyGames</div><div class="tile" data-u="https://www.wikipedia.org">Wikipedia</div></div></div><div id="side"></div></div>
+<div id="frames"><div id="start" class="on"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h1>Cipher <em>Browser</em></h1><p>Search the web or enter an address.</p><input id="sq" placeholder="Search or enter address" autocomplete="off"><div class="tiles"><div class="tile" data-u="https://html.duckduckgo.com/html/">DuckDuckGo</div><div class="tile" data-u="https://www.youtube.com">YouTube</div><div class="tile" data-u="https://www.reddit.com">Reddit</div><div class="tile" data-u="https://www.crazygames.com">CrazyGames</div><div class="tile" data-u="https://www.wikipedia.org">Wikipedia</div></div></div><div id="side"></div></div>
 </div>
 <div id="ld"><div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div>
 <h1><span id="ldH">Opening</span><em id="ldT"></em></h1><div class="track"><i></i></div><p id="ldM"></p><div id="ldD"></div>
@@ -89,7 +89,7 @@ body.min #wm{opacity:.5;transform:none}#wm .bi{width:16px;height:16px;border-rad
 <script src="/bootstrap-init.js"></script>
 <script>
 const $=i=>document.getElementById(i),api=(p,o={})=>fetch("/api/"+p,{credentials:"same-origin",headers:{"Content-Type":"application/json"},...o}),J=b=>({method:"POST",body:JSON.stringify(b)});
-const ENG=["https://duckduckgo.com/?q=","https://www.bing.com/search?q="];
+const ENG=["https://html.duckduckgo.com/html/?q=","https://lite.duckduckgo.com/lite/?q="];
 const M1="Huh... Lots of people from Cipher are on here. Don’t worry, our servers are working hard. Give us a sec...";
 const M2="Okay. No, we do see your request to enter but there’s just too many people on here that it’s making the server strain. We’re not blaming you but we understand that you could be impatient.";
 let ctl,tabs=[],cur=0,ready,bms=[],L={t:null,start:0,timers:[],retry:null};
@@ -98,9 +98,10 @@ const short=(s,n=60)=>{s=String(s||"");return s.length>n?s.slice(0,n-1)+"…":s}
 const host=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch{return u}};
 /* ---- full-screen loading / error screen ---- */
 function ld(mode,title,retry){clearT();$("ld").className="on"+(mode=="err"?" err":"");$("ldH").textContent=mode=="err"?"We couldn’t load":"Opening";$("ldT").textContent=short(title);$("ldM").textContent="";$("ldD").style.display="none";L.retry=retry||null}
-function clearT(){L.timers.forEach(clearTimeout);L.timers=[]}
+function clearT(){L.timers.forEach(clearTimeout);L.timers=[];clearInterval(L.poll)}
 function hideLd(){clearT();L.t=null;$("ld").className=""}
 function showLoad(t){L.t=t;L.start=Date.now();ld("load",t.title||host(t.url));
+ L.poll=setInterval(()=>{try{const d=t.f.contentDocument;if(L.t===t&&!$("ld").classList.contains("err")&&d&&d!==t.d0&&t.f.contentWindow.location.href!=="about:blank"&&d.readyState!=="loading"&&d.body&&d.body.innerText.trim().length>20)hideLd()}catch{}},400);
  L.timers=[setTimeout(()=>{$("ldM").textContent=M1},45000),setTimeout(()=>{$("ldM").textContent=M2;L.err?showErr(t,L.err):diag()},60000)]}
 async function diag(){if(!L.t)return;const d=$("ldD");d.style.display="block";d.textContent="Running a quick check…";
  const ok=v=>v?"✓":"✗";let srv=false,ms=0;try{const a=Date.now();srv=(await api("me")).status<500;ms=Date.now()-a}catch{}
@@ -138,6 +139,7 @@ function closeTab(i){const x=tabs[i];if(!x||x.closing)return;x.closing=1;const e
 
 /* ---- per-frame plugins: URL watcher, cache, ad/tracker blocking, Cipher error page ---- */
 const ADS=/(^|\.)(doubleclick\.net|googlesyndication\.com|googleadservices\.com|adsafeprotected\.com|sharethrough\.com|adnxs\.com|pubmatic\.com|rubiconproject\.com|criteo\.(com|net)|3lift\.com|amazon-adsystem\.com|moatads\.com|doubleverify\.com|adform\.net|openx\.net|casalemedia\.com|taboola\.com|outbrain\.com|google-analytics\.com|scorecardresearch\.com|yieldmo\.com|smaato\.net|media\.net|indexww\.com|contextweb\.com|bidswitch\.net|adsrvr\.org|teads\.tv|ads\.pubmatic\.com)$/i;
+const ADBLOCK=false; /* set true to block ad/tracker hosts (can break some game sites) */
 const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const errPage=(url,err)=>`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cipher Browser</title><style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+4:wght@700&display=swap');:root{color-scheme:light dark}body{margin:0;min-height:100vh;display:grid;place-items:center;text-align:center;padding:24px;box-sizing:border-box;background:#f4f1e9;color:#2b2620;font:15px Inter,system-ui,sans-serif}@media(prefers-color-scheme:dark){body{background:#2a2620;color:#ede5d4}}.b{width:72px;height:72px;margin:0 auto 20px;border-radius:22px;background:rgba(192,80,77,.14);color:#c0504d;display:grid;place-items:center;font:700 32px Georgia,serif}h1{font:700 32px/1.15 'Source Serif 4',Georgia,serif;letter-spacing:-.035em;margin:0 0 10px}h1 em{color:#7a8a62}p{opacity:.7;max-width:480px;margin:0 auto 14px;line-height:1.6}code{display:block;max-width:520px;margin:0 auto;padding:12px 16px;border-radius:14px;background:rgba(122,138,98,.14);font:12px ui-monospace,monospace;word-break:break-word;text-align:left}</style><div><div class="b">!</div><h1>We couldn’t load <em>this page</em></h1><p>Something got in the way. Here’s what the Cipher server told us.</p><code>${esc(url)}<br>${esc(err)}</code></div>`;
 function mkPlugins(t){const pl=[];
@@ -146,7 +148,7 @@ function mkPlugins(t){const pl=[];
   class CipherPlugin extends ManagedPlugin{constructor(){super("cipher-plugin",[])}
    install(frame){super.install(frame);
     const blank={body:"",status:204,statusText:"No Content"};
-    this.tap(frame.hooks.fetch.request,(ctx,props)=>{try{const h=(props.url&&props.url.hostname)||new URL(props.url).hostname;if(ADS.test(h))props.earlyResponse={...blank,headers:[]}}catch{}});
+    this.tap(frame.hooks.fetch.request,(ctx,props)=>{try{const h=(props.url&&props.url.hostname)||new URL(props.url).hostname;if(ADBLOCK&&ADS.test(h))props.earlyResponse={...blank,headers:[]}}catch{}});
     this.tap(frame.hooks.error.request,(ctx,props)=>{props.suppressError=true;
      props.setResponse={status:502,statusText:"Bad Gateway",headers:[["Content-Type","text/html; charset=utf-8"]],body:errPage((ctx.rawrequest&&ctx.rawrequest.rawUrl)||"",String(ctx.error))}})}}
   pl.push(new CipherPlugin())}catch(e){console.warn("CipherPlugin",e)}
@@ -165,6 +167,7 @@ function onLoad(t){if(!t.armed)return;let bad=null;
  if(bad){fail(t,bad);return}
  t.err=null;if(L.t===t)hideLd();draw();save()}
 function go(t,u,silent){t.url=u;t.title=host(u);t.armed=true;t.err=null;L.err=null;$("pbar").style.width="70%";if(!silent||L.t!==t)showLoad(t);else $("ldT").textContent=short(t.title);
+ t.d0=null;try{t.d0=t.f.contentDocument}catch{}
  t.fr.go(u);api("data/history",J({url:u,title:t.title}));draw();save()}
 function nav(v){const t=tabs[cur];const raw=v.trim();if(!raw)return;let u;
  if(/^https?:\/\//i.test(raw)){u=raw;t.q=null}else if(/^[\w-]+(\.[\w-]+)+(:\d+)?(\/.*)?$/.test(raw)){u="https://"+raw;t.q=null}else{t.q=raw;t.ei=0;api("data/searches",J({query:raw}));u=ENG[0]+encodeURIComponent(raw)}
