@@ -43,6 +43,6 @@ $("hist").onclick=()=>panel("history");$("bks").onclick=()=>panel("bookmarks");
 $("out").onclick=async()=>{await api("logout",{method:"POST"});location.reload()};
 async function enter(){$("login").style.display="none";$("app").style.display="flex";await boot();const r=await(await api("tabs")).json();(r.length?r:[{url:""}]).forEach(t=>open(t.url||""))}
 $("go").onclick=async()=>{const r=await api("login",J({code:$("code").value}));if(r.ok)enter();else $("err").textContent=r.status==429?"Too many attempts.":"Invalid or expired code."};
-$("code").onkeydown=e=>e.key=="Enter"&&$("go").click();
+$("code").onkeydown=e=>{if(e.key=="Enter")$("go").click()};
 api("me").then(r=>r.ok&&enter());
 </script></body></html>
