@@ -17,7 +17,7 @@
       const ok = () => { if (navigator.serviceWorker.controller) { clearTimeout(t); res(); } };
       navigator.serviceWorker.addEventListener('controllerchange', ok); ok();
     });
-    const worker = navigator.serviceWorker.controller || reg.active || (await navigator.serviceWorker.ready).active;
+    const worker = navigator.serviceWorker.controller;
     if (!worker) {
       let done = 0; try { done = sessionStorage.getItem('cbsw'); } catch (_) {}
       if (!done) { try { sessionStorage.setItem('cbsw', '1'); } catch (_) {} location.reload(); await new Promise(() => {}); }
