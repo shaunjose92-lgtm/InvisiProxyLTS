@@ -1,14 +1,19 @@
 (() => {
   'use strict';
   window.$scramjetUtils = window.$scramjetUtils || { UrlWatcherPlugin: class { constructor(cb) { this.cb = cb; this.__url = 1; } } };
+  /* Search: Bing first, DuckDuckGo only as backup */
+  addEventListener('DOMContentLoaded', () => {
+    try { ENG[0] = 'https://www.bing.com/search?q='; ENG[1] = 'https://html.duckduckgo.com/html/?q='; } catch (e) {}
+    document.querySelectorAll('.tile').forEach(t => { if (/duckduckgo/i.test(t.dataset.u || '')) { t.dataset.u = 'https://www.bing.com'; t.textContent = 'Bing'; } });
+  });
   const load = s => new Promise((res, rej) => { const e = document.createElement('script'); e.src = s; e.onload = res; e.onerror = () => rej(new Error('Failed to load ' + s)); document.head.append(e); });
   async function sw() {
     if (!navigator.serviceWorker) throw new Error('This browser needs HTTPS and service-worker support.');
     const reg = await navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' });
     const w = reg.installing || reg.waiting;
     if (w && w.state !== 'activated') await new Promise(r => { const t = setTimeout(r, 8000); w.addEventListener('statechange', () => { if (w.state === 'activated' || w.state === 'redundant') { clearTimeout(t); r(); } }); });
-    await new Promise((res, rej) => {
-      const t = setTimeout(() => rej(new Error('Browser setup timed out. Reload and try again.')), 15000);
+    await new Promise(res => {
+      const t = setTimeout(res, 4000);
       const ok = () => { if (navigator.serviceWorker.controller) { clearTimeout(t); res(); } };
       navigator.serviceWorker.addEventListener('controllerchange', ok); ok();
     });
