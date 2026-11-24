@@ -69,10 +69,37 @@ body.min #wm{opacity:.5;transform:none}#wm .bi{width:16px;height:16px;border-rad
 @keyframes shim{to{background-position:-200% 0}}
 #bm.on{color:var(--sage)}#bm.pop{animation:pop .35s cubic-bezier(.3,1.6,.5,1)}@keyframes pop{40%{transform:scale(1.45)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+/* ---- Terms & Conditions gate ---- */
+#tc{--warn:#b7791f;--warn-soft:rgba(183,121,31,.14);position:fixed;inset:0;z-index:65;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(20,18,14,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+@media(prefers-color-scheme:dark){#tc{--warn:#e0b25a;--warn-soft:rgba(224,178,90,.15)}}
+#tc.on{display:flex;animation:ldin .3s ease both}
+.tcc{width:min(780px,100%);max-height:min(94vh,900px);display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:0 30px 80px -30px rgba(0,0,0,.55);overflow:hidden}
+.tch{display:flex;gap:16px;align-items:flex-start;padding:22px 26px 18px;border-bottom:1px solid var(--line);background:linear-gradient(130deg,var(--paper),var(--bg-2))}
+.tci{flex:none;width:52px;height:52px;border-radius:16px;background:var(--warn-soft);color:var(--warn);display:grid;place-items:center}.tci svg{width:28px;height:28px}
+.tch h2{font:700 clamp(22px,4vw,30px)/1.1 var(--display);letter-spacing:-.03em;margin:0 0 6px}.tch h2 em{font-style:italic;color:var(--sage)}
+.tch p{margin:0;color:var(--text-dim);line-height:1.55;font-size:14px}
+#tcBody{flex:1;min-height:0;overflow:auto;padding:20px 26px 10px;line-height:1.65;font-size:14px;outline:0}
+#tcBody h3{font:700 19px/1.2 var(--display);letter-spacing:-.02em;margin:26px 0 8px}
+#tcBody h3.tcmain{font-size:24px;margin:30px 0 4px}
+#tcBody p{margin:0 0 10px}#tcBody ul,#tcBody ol{margin:0 0 12px;padding-left:22px}#tcBody li{margin:0 0 7px}
+#tcBody .tcver{color:var(--text-dim);font-size:12.5px;margin:0 0 6px}
+.tcbox{border-radius:16px;padding:16px 18px;margin:0 0 16px;border:1px solid var(--line)}
+#tcBody .tcbox h3{margin:0 0 8px;font-size:18px}
+.tcbox.warn{background:var(--warn-soft);border-color:var(--warn)}.tcbox.warn h3{color:var(--warn)}
+.tcbox.safe{background:var(--sage-soft);border-color:var(--sage)}.tcbox.safe h3{color:var(--sage)}
+.tcbox>:last-child{margin-bottom:0}
+.tcf{padding:14px 26px 20px;border-top:1px solid var(--line);background:var(--paper)}
+.tchint{font-size:12.5px;color:var(--text-dim);margin:0 0 8px;min-height:18px}
+#tcErr{color:var(--bad);font-size:13px;min-height:18px;margin:0 0 6px}
+.tcchk{display:flex;gap:10px;align-items:flex-start;line-height:1.5;font-size:13.5px;cursor:pointer;margin:0 0 14px}
+.tcchk input{width:18px;height:18px;margin:2px 0 0;padding:0;flex:none;accent-color:var(--sage)}
+.tcb{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}.tcb button{height:42px;border-radius:12px;padding:0 20px;border-color:var(--line)}.tcb button.p{border-color:var(--sage)}
+#tcOk:disabled{opacity:.45;cursor:not-allowed;filter:none}
+#login p.tcnote{margin-top:14px;font-size:12.5px}.tcnote a{color:var(--sage);font-weight:600;text-decoration:none}.tcnote a:hover{text-decoration:underline}
 </style></head><body>
 <div id="pbar"></div>
 <div class="title" id="ltitle"><div class="brand"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bt">Cipher <em>Browser</em></span></div></div>
-<div id="login"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h2>Cipher <em>Browser</em></h2><p>Enter your Browser Login Code from your Cipher account.</p><input id="code" placeholder="CB-XXXXXXXXXXXXXXXXXXXXXXXX" autocomplete="off" spellcheck="false"><div id="err"></div><button class="p" id="go">Sign in</button></div>
+<div id="login"><div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h2>Cipher <em>Browser</em></h2><p>Enter your Browser Login Code from your Cipher account.</p><input id="code" placeholder="CB-XXXXXXXXXXXXXXXXXXXXXXXX" autocomplete="off" spellcheck="false"><div id="err"></div><button class="p" id="go">Sign in</button><p class="tcnote">By signing in you agree to the <a href="#" id="tcOpen">Cipher Browser Terms</a>. You’ll be asked to review them the first time you sign in.</p></div>
 <div id="app">
 <div id="chrome"><div><div class="title"><div class="brand"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bt">Cipher <em>Browser</em></span></div></div>
 <div class="tabs" id="tabs"></div>
@@ -85,6 +112,137 @@ body.min #wm{opacity:.5;transform:none}#wm .bi{width:16px;height:16px;border-rad
 <div class="ldf"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span class="bt" style="font-size:15px">Cipher <em>Browser</em></span></div></div>
 <button id="rest" title="Show toolbar (Alt+H)" aria-label="Show toolbar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
 <div id="wm"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span>Cipher</div>
+<div id="tc" role="dialog" aria-modal="true" aria-labelledby="tcTitle"><div class="tcc">
+<div class="tch"><span class="tci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6l8-3z"/><path d="M12 8v5M12 16.5v.01"/></svg></span><div><h2 id="tcTitle">Important: <em>please read this first</em></h2><p>Cipher Browser opens up the wider web, and that comes with real privacy risks. We want you to understand them, and to know exactly how to protect yourself, before you continue.</p></div></div>
+<div id="tcBody" tabindex="0">
+<div class="tcbox warn"><h3>The short version</h3><ul>
+<li><strong>It isn’t private or anonymous.</strong> The websites you open are fetched through Cipher’s servers, so your activity passes through a system that isn’t your own device.</li>
+<li><strong>We save a record so your tabs can come back.</strong> Your history, searches, bookmarks and open tabs are stored against your Cipher account. You can erase all of it at any time.</li>
+<li><strong>Be careful with passwords and payments.</strong> Avoid entering banking details, your main email password or anything highly sensitive into sites opened through a proxy.</li>
+<li><strong>Your browser code is a key.</strong> Anyone who has it can open your Cipher Browser profile. Never share it, post it or screenshot it. If it leaks, replace it straight away using the steps below.</li>
+<li><strong>There are no guarantees.</strong> Some sites won’t work, and the service can be slow or unavailable when lots of people are using it.</li></ul></div>
+<div class="tcbox safe"><h3>If your browser code is ever leaked</h3>
+<p>Don’t panic. You can fix this yourself in under a minute:</p>
+<ol><li>Open <strong>Cipher</strong> and go to <strong>Settings</strong>.</li><li>Choose <strong>Apps and services</strong>.</li><li>Select <strong>New browser code</strong> and confirm.</li></ol>
+<p>Your old code stops working immediately, sessions linked to it are ended, and your saved history, searches, bookmarks and tabs are deleted. Sign in again with your new code. As a precaution, also change the password on any website you were signed in to through the browser. There is a limit on how many new codes you can request each day, which exists only to prevent abuse.</p></div>
+
+<h3 class="tcmain">Cipher Browser Terms and Conditions</h3>
+<p class="tcver">Version browser-2026-11-25 · Effective 25 November 2026</p>
+<p>These Terms are an agreement between you and Cipher (“Cipher”, “we”, “us”). They explain how Cipher Browser works, what we store, what risks come with using a web proxy, and what we each expect of the other. We have tried to write them in plain language. Please read all of them.</p>
+
+<h3>1. About these Terms</h3>
+<p>1.1 By ticking the box and selecting “I accept and continue”, or by continuing to use Cipher Browser after these Terms apply, you agree to them. If you do not agree, select “Go back” and do not use the service.</p>
+<p>1.2 These Terms apply in addition to any other terms or policies that apply to your Cipher account. If they conflict on the subject of Cipher Browser, these Terms take priority for Cipher Browser only.</p>
+<p>1.3 We record that you accepted these Terms, which version you accepted and when, so that we can show you what you agreed to and ask again when the Terms change.</p>
+
+<h3>2. What Cipher Browser is</h3>
+<p>2.1 Cipher Browser is a web browser that runs inside your existing browser. It uses a proxy: when you open a website, the request is sent to Cipher’s servers, which fetch the page and pass it back to you.</p>
+<p>2.2 Cipher Browser is offered free of charge, as a convenience, on a best-effort basis. It is not a replacement for a full desktop or mobile browser, and it is not a security or anonymity product.</p>
+<p>2.3 Websites are built by other people and are designed for ordinary browsers. Some will load slowly, look wrong, or not work at all through a proxy. We do not guarantee that any particular website, game, video, login or feature will work.</p>
+
+<h3>3. Who can use it</h3>
+<p>3.1 You need a Cipher account in good standing. Your browser profile is linked to that account through your Browser Login Code.</p>
+<p>3.2 You must be old enough to agree to these Terms where you live. If you are under 18, please make sure a parent or guardian knows that you use Cipher Browser and is comfortable with it.</p>
+<p>3.3 If your Cipher account is suspended, deactivated or deleted, your browser profile stops working too.</p>
+
+<h3>4. Your Browser Login Code</h3>
+<p>4.1 Your Browser Login Code (it starts with “CB-”) is how Cipher Browser knows which profile is yours. It works like a key: anyone who has it can sign in to your Cipher Browser profile and see your saved history, searches, bookmarks and tabs.</p>
+<p>4.2 Please keep your code secret. Do not share it, post it, put it in a screenshot or paste it into websites, chats or documents that other people can see. We will never ask you for it.</p>
+<p>4.3 If you think your code has been leaked or seen by someone else, replace it immediately: go to Settings, then Apps and services, then New browser code. This ends sessions linked to the old code and deletes the saved browser data described in section 5. Sign in with the new code afterwards.</p>
+<p>4.4 Until you replace a leaked code, activity under it may be made by someone other than you. Please act quickly and also change the passwords of any sites you were signed in to through the browser.</p>
+
+<h3>5. What we store, and for how long</h3>
+<p>5.1 To run Cipher Browser we store the following, linked to your Cipher account:</p>
+<ul>
+<li><strong>Browsing history:</strong> the web address and title of pages you visit, and the time you visited them.</li>
+<li><strong>Searches:</strong> the words you type into the search or address bar.</li>
+<li><strong>Bookmarks:</strong> pages you choose to save.</li>
+<li><strong>Open tabs:</strong> the addresses and titles of your tabs, so they can be restored next time.</li>
+<li><strong>Your browser code and its version:</strong> so that we can check that a sign-in is valid and end old sessions when you replace your code.</li>
+<li><strong>Your acceptance of these Terms:</strong> the version, the date and time, and how you accepted.</li>
+</ul>
+<p>5.2 Like any online service, our servers and hosting providers may also process technical information, such as IP addresses, timestamps and error details, in order to run, secure and troubleshoot the service.</p>
+<p>5.3 We use this information to provide Cipher Browser, to restore your tabs, to keep the service secure, to prevent abuse and to meet legal obligations.</p>
+<p>5.4 Your browsing history, searches, bookmarks and tabs are kept until you delete them, replace your browser code, or your account is removed. You can delete items from History and Bookmarks inside the browser, clear your history, or erase everything at once by getting a new browser code.</p>
+<p>5.5 Records of which Terms you accepted are kept so that we can show what you agreed to.</p>
+<p>5.6 Websites you visit may set cookies and store information in your own browser. That information is controlled by those websites and by your own device, not by Cipher.</p>
+
+<h3>6. Privacy risks you should understand</h3>
+<p>Please read this section carefully. Using any proxy involves trade-offs, and you should decide with your eyes open.</p>
+<ul>
+<li><strong>Your traffic passes through our servers.</strong> Because pages are fetched on your behalf, the service sits between you and the websites you visit. For that reason it is technically able to process what you request and receive, including information you type into websites. Do not treat Cipher Browser as private.</li>
+<li><strong>It does not make you anonymous.</strong> A website may see Cipher’s servers rather than your device, but it can still recognise you through accounts you sign in to, cookies, the information you enter, and other signals.</li>
+<li><strong>Saved history can be seen by anyone with access to your profile.</strong> That includes anyone who gets your Browser Login Code or your Cipher account, or who uses your device while you are signed in.</li>
+<li><strong>Shared and public devices.</strong> If you use Cipher Browser on a device other than your own, sign out when you finish and use “New browser code” if you are worried that someone could have seen your tabs.</li>
+<li><strong>Trackers and ads.</strong> Blocking of advertising and tracking content is not guaranteed, so websites may still track you.</li>
+<li><strong>Unsafe websites are still unsafe.</strong> A proxy does not remove viruses, scams or fake login pages. Be as careful as you would be anywhere else on the internet.</li>
+<li><strong>Network owners can see that you use Cipher.</strong> If you use Cipher Browser on a school, workplace or public network, the network owner may be able to see that you are connecting to Cipher, even if they cannot see which sites you visit through it.</li>
+<li><strong>Things can go wrong.</strong> Software has bugs, servers fail and people make mistakes. We work to keep Cipher Browser secure, but we cannot promise that it will never be misused, interrupted or breached.</li>
+</ul>
+
+<h3>7. Passwords, payments and sensitive information</h3>
+<p>7.1 We strongly recommend that you do not enter banking or card details, government identity numbers, medical information, or the passwords for important accounts (such as your email or financial accounts) into any website opened through Cipher Browser.</p>
+<p>7.2 If you choose to sign in to other services through Cipher Browser, you do so at your own risk. Use a password that you do not use anywhere else, turn on two-factor authentication where it is offered, and change the password if you think your browser code may have leaked.</p>
+
+<h3>8. Third-party websites and content</h3>
+<p>8.1 Cipher does not own, review or control the websites you visit. Their content, terms and privacy practices are theirs alone, and may be different from ours.</p>
+<p>8.2 Some websites do not allow access through a proxy. You must follow the terms of any website you use.</p>
+<p>8.3 We are not responsible for what third-party websites show you, collect from you or do with your information.</p>
+
+<h3>9. Acceptable use</h3>
+<p>You agree not to use Cipher Browser to:</p>
+<ul>
+<li>break the law, or help anyone else break the law;</li>
+<li>harass, threaten, bully, defraud or impersonate other people;</li>
+<li>view, share or look for sexual content involving children, or any other content that is illegal to possess or view;</li>
+<li>spread viruses or malware, or attack, scan, probe or overload any website, network or system;</li>
+<li>try to get around, disable or interfere with the security, rate limits or sign-in checks of Cipher Browser;</li>
+<li>share, sell or trade browser codes, or use someone else’s code without their permission;</li>
+<li>run automated tools, bots or scrapers through the service in a way that harms it or other users; or</li>
+<li>infringe other people’s rights, including their privacy and intellectual property.</li>
+</ul>
+
+<h3>10. Rules where you are</h3>
+<p>Schools, workplaces, libraries and other networks often have their own rules about what you may access. You are responsible for following the rules that apply to you. Cipher does not encourage anyone to break those rules, and we are not responsible for any consequences that arise from your use of Cipher Browser on a network that does not allow it.</p>
+
+<h3>11. Availability, queues and limits</h3>
+<p>11.1 Cipher Browser may be busy. When many people are using it, you may be placed in a queue, see slower speeds, or be unable to connect for a while.</p>
+<p>11.2 We may add or change limits (for example on sign-in attempts, new codes or usage), and we may change, pause or stop any part of the service, including for maintenance or security reasons. Where we can, we will try to give notice.</p>
+<p>11.3 We do not promise that Cipher Browser will always be available, fast or free of errors.</p>
+
+<h3>12. Security problems and reporting</h3>
+<p>12.1 If you think your browser code has leaked, or you notice something suspicious, replace your code straight away and then tell Cipher Support so that we can look into it.</p>
+<p>12.2 If we detect misuse or a possible security problem, we may end sessions, replace codes, or temporarily turn the service off to protect people. This may sign you out without notice.</p>
+
+<h3>13. Suspension and ending access</h3>
+<p>13.1 We may suspend or end your access to Cipher Browser if you break these Terms, if your activity puts other people or the service at risk, or if we are required to by law.</p>
+<p>13.2 You can stop using Cipher Browser at any time. To delete what we have saved, use “New browser code” as described in section 4.3.</p>
+
+<h3>14. Ownership</h3>
+<p>Cipher Browser, including its design, text, branding and software, belongs to Cipher or its licensors. Content on third-party websites belongs to its owners. These Terms do not give you ownership of either.</p>
+
+<h3>15. Our promises, and their limits</h3>
+<p>15.1 We will take reasonable care in running Cipher Browser and in protecting the information described in section 5.</p>
+<p>15.2 Beyond that, Cipher Browser is provided “as is” and “as available”. To the extent the law allows, we do not promise that it will be secure, private, uninterrupted, error-free or suitable for any particular purpose, or that any website will work through it.</p>
+<p>15.3 Nothing in these Terms excludes, restricts or modifies any right or remedy you have under the Australian Consumer Law or any other law that cannot be excluded.</p>
+
+<h3>16. Limits on our responsibility</h3>
+<p>16.1 To the extent the law allows, Cipher is not responsible for indirect or consequential loss, for loss that comes from what third-party websites do, for loss caused by a browser code that was shared, leaked or not replaced, or for loss caused by you using Cipher Browser in a way these Terms do not allow.</p>
+<p>16.2 Where a law says we cannot exclude responsibility for something, our responsibility is limited, to the extent the law allows, to supplying the service again.</p>
+
+<h3>17. Changes to these Terms</h3>
+<p>17.1 We may update these Terms from time to time, for example when the service or the law changes. Each version has a version number shown at the top.</p>
+<p>17.2 When there is a new version, we will ask you to read and accept it before you continue to use Cipher Browser. If you do not accept it, you will not be able to keep using the service.</p>
+
+<h3>18. Governing law</h3>
+<p>These Terms are governed by the laws of South Australia, Australia, and the courts of South Australia have non-exclusive jurisdiction, subject to any rights you have under the law of the place where you live.</p>
+
+<h3>19. Contact</h3>
+<p>If you have a question about these Terms, about your data, or about a security problem, please contact Cipher Support through Cipher.</p>
+<p class="tcver">End of Terms · Version browser-2026-11-25</p>
+</div>
+<div class="tcf"><p class="tchint" id="tcHint"></p><div id="tcErr"></div><label class="tcchk" id="tcChkW"><input type="checkbox" id="tcChk"><span>I have read the Terms, I understand the privacy risks described above, and I know how to replace my browser code if it is ever leaked.</span></label><div class="tcb"><button id="tcBack">Go back</button><button class="p" id="tcOk" disabled>I accept and continue</button></div></div>
+</div></div>
 <div id="status"></div>
 <script src="/bootstrap-init.js"></script>
 <script>
@@ -100,6 +258,8 @@ const host=u=>{try{return new URL(u).hostname.replace(/^www\./,"")}catch{return 
 function ld(mode,title,retry){clearT();$("ld").className="on"+(mode=="err"?" err":"");$("ldH").textContent=mode=="err"?"We couldn’t load":"Opening";$("ldT").textContent=short(title);$("ldM").textContent="";$("ldD").style.display="none";L.retry=retry||null}
 function clearT(){L.timers.forEach(clearTimeout);L.timers=[];clearInterval(L.poll)}
 function hideLd(){clearT();L.t=null;$("ld").className=""}
+/* startup loader: shown from sign-in until the engine and tabs are ready (also survives the one-off auto reload) */
+function bootLd(msg){ld("load","Cipher Browser");$("ldH").textContent="Starting";$("ldM").textContent=msg||""}
 function showLoad(t){L.t=t;L.start=Date.now();ld("load",t.title||host(t.url));
  L.poll=setInterval(()=>{try{const d=t.f.contentDocument;if(L.t===t&&!$("ld").classList.contains("err")&&d&&d!==t.d0&&t.f.contentWindow.location.href!=="about:blank"&&d.readyState!=="loading"&&d.body&&d.body.innerText.trim().length>20)hideLd()}catch{}},400);
  L.timers=[setTimeout(()=>{$("ldM").textContent=M1},45000),setTimeout(()=>{$("ldM").textContent=M2;L.err?showErr(t,L.err):diag()},60000)]}
@@ -198,16 +358,43 @@ document.addEventListener("pointerdown",e=>{if(!e.target.closest("#side,#hist,#b
 $("hist").onclick=()=>panel("history");$("bks").onclick=()=>panel("bookmarks");
 $("out").onclick=async()=>{await api("logout",{method:"POST"});location.reload()};
 async function enter(){$("ltitle").style.display="none";$("login").style.display="none";$("app").style.display="flex";$("app").classList.add("in");
- try{await boot()}catch{return}await loadBms();
+ bootLd("Getting things ready…");
+ try{await boot()}catch{return}
+ bootLd("Loading your tabs…");await loadBms();
  let r=[];try{r=await(await api("tabs")).json()}catch{}if(!Array.isArray(r))r=[];
- if(!r.length){await openTab("");return}
+ if(!r.length){await openTab("");hideLd();return}
  for(const x of r)await openTab(x.url,x.title,true);activate(0)}
-$("go").onclick=async()=>{const b=$("go");if(b.disabled)return;$("err").textContent="";b.disabled=true;b.textContent="Signing in…";let r;try{r=await api("login",J({code:$("code").value}))}catch{r={ok:false,status:0}}b.disabled=false;b.textContent="Sign in";
- if(r.ok)enter();else{$("err").textContent=r.status==429?"Too many attempts. Try again in a few minutes.":"Invalid or expired code.";const l=$("login");l.classList.remove("shake");void l.offsetWidth;l.classList.add("shake")}};
+/* ---- Terms & Conditions: acceptance is recorded in Supabase (terms_acceptances) ---- */
+const SB="https://cvnbsgfruntizatfmhah.supabase.co",SBK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN2bmJzZ2ZydW50aXphdGZtaGFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5MTE1NjIsImV4cCI6MjEwMjQ4NzU2Mn0.ug6bZS3zwsO9EEk76zTPwAkfClEJEoslb7GwrX4OWho";
+const terms=(action,code)=>fetch(SB+"/rest/v1/rpc/cipher_browser_terms",{method:"POST",headers:{"Content-Type":"application/json",apikey:SBK,Authorization:"Bearer "+SBK},body:JSON.stringify({p_action:action,p_code:code})}).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json()});
+/* openTc(code): accept mode (resolves true once accepted and saved). openTc(null): read-only. */
+function openTc(code){return new Promise(res=>{const T=$("tc"),B=$("tcBody"),chk=$("tcChk"),ok=$("tcOk"),back=$("tcBack"),read=!code;let fin=false;
+ const sync=()=>{const end=B.scrollTop+B.clientHeight>=B.scrollHeight-24;$("tcHint").textContent=read||end?"":"Please scroll to the end of the Terms to continue.";ok.disabled=!(end&&chk.checked)};
+ const key=e=>{if(e.key=="Escape")close(false)};
+ const close=v=>{if(fin)return;fin=true;T.classList.remove("on");B.onscroll=null;chk.onchange=null;ok.onclick=null;back.onclick=null;document.removeEventListener("keydown",key);res(v)};
+ $("tcErr").textContent="";chk.checked=false;ok.disabled=true;ok.textContent="I accept and continue";$("tcChkW").style.display=ok.style.display=read?"none":"";back.textContent=read?"Close":"Go back";
+ T.classList.add("on");B.scrollTop=0;document.addEventListener("keydown",key);B.onscroll=sync;chk.onchange=sync;setTimeout(()=>{sync();B.focus({preventScroll:true})},50);
+ back.onclick=()=>close(false);
+ ok.onclick=async()=>{if(ok.disabled)return;ok.disabled=true;ok.textContent="Saving…";$("tcErr").textContent="";let r=null;try{r=await terms("accept",code)}catch{}
+  if(r&&r.ok&&r.accepted)close(true);else{ok.textContent="I accept and continue";ok.disabled=false;$("tcErr").textContent=r&&r.throttled?"Too many attempts. Please wait a few minutes and try again.":"We couldn’t save your acceptance. Check your connection and try again."}}})}
+$("tcOpen").onclick=e=>{e.preventDefault();openTc(null)};
+$("go").onclick=async()=>{const b=$("go");if(b.disabled)return;$("err").textContent="";b.disabled=true;b.textContent="Signing in…";
+ const done=()=>{b.disabled=false;b.textContent="Sign in"},bad=m=>{done();$("err").textContent=m;const l=$("login");l.classList.remove("shake");void l.offsetWidth;l.classList.add("shake")};
+ /* 1) has this code's owner accepted the current Terms? */
+ const code=$("code").value.trim();let gate=null;try{gate=await terms("check",code)}catch{}
+ if(!gate)return bad("We couldn’t check the Terms right now. Check your connection and try again.");
+ if(gate.throttled)return bad("Too many attempts. Try again in a few minutes.");
+ if(gate.ok&&!gate.accepted&&!await openTc(code)){done();return}
+ /* 2) normal sign-in (an invalid code is rejected here as before) */
+ let r;try{r=await api("login",J({code:$("code").value}))}catch{r={ok:false,status:0}}done();
+ if(r.ok)enter();else bad(r.status==429?"Too many attempts. Try again in a few minutes.":"Invalid or expired code.")};
 /* ---- minimise (hide toolbar + tabs, show faded Cipher watermark) ---- */
 function mini(on){document.body.classList.toggle("min",on);if(on)st("Minimised. Press Alt+H or use the tab at the top to bring it back.")}
 $("mini").onclick=()=>mini(true);$("rest").onclick=()=>mini(false);
 addEventListener("keydown",e=>{if(e.altKey&&String(e.key).toLowerCase()=="h"&&$("app").style.display=="flex"){e.preventDefault();mini(!document.body.classList.contains("min"))}});
 $("code").onkeydown=e=>{if(e.key=="Enter")$("go").click()};
-api("me").then(r=>{if(r.ok)enter()}).catch(()=>{});
+/* if the engine just triggered its one-off reload, show the loader straight away instead of a blank/frozen page */
+let resumed=false;try{resumed=!!sessionStorage.getItem("cbsr")}catch{}
+if(resumed)bootLd("Almost there…");
+api("me").then(r=>{if(r.ok)enter();else if(resumed)hideLd()}).catch(()=>{if(resumed)hideLd()});
 </script></body></html>
