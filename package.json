@@ -1,2 +1,2 @@
 {"name":"cipher-browser","version":"1.0.0","type":"module","scripts":{"start":"node server.js"},"engines":{"node":">=22"},
-"dependencies":{"express":"^4.19.2","@mercuryworkshop/proxy-bootstrap":"latest"}}
+"dependencies":{"express":"^4.19.2","ws":"^8.18.3","@mercuryworkshop/wisp-js":"^0.4.1","@mercuryworkshop/libcurl-transport":"2.0.6","@mercuryworkshop/scramjet":"https://github.com/MercuryWorkshop/scramjet/releases/download/v2.0.67-alpha.2/mercuryworkshop-scramjet-2.0.67-alpha.2.tgz","@mercuryworkshop/scramjet-controller":"https://github.com/MercuryWorkshop/scramjet/releases/download/v2.0.67-alpha.2/mercuryworkshop-scramjet-controller-0.0.14.tgz"}}
