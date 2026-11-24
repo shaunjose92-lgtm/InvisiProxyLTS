@@ -1,2 +1,2 @@
-{"name":"cipher-browser","version":"1.0.0","type":"module","scripts":{"start":"node server.js"},
-"dependencies":{"express":"^4.19.2","@mercuryworkshop/scramjet":"latest","@mercuryworkshop/bare-mux":"^2.1.7","@mercuryworkshop/libcurl-transport":"^1.5.0","@mercuryworkshop/wisp-js":"latest"}}
+{"name":"cipher-browser","version":"1.0.0","type":"module","scripts":{"start":"node server.js"},"engines":{"node":">=22"},
+"dependencies":{"express":"^4.19.2","@mercuryworkshop/proxy-bootstrap":"latest"}}
