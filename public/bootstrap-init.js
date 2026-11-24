@@ -2,9 +2,10 @@
   'use strict';
   window.$scramjetUtils = window.$scramjetUtils || { UrlWatcherPlugin: class { constructor(cb) { this.cb = cb; this.__url = 1; } } };
   addEventListener('DOMContentLoaded', () => {
-    try { ENG[0] = 'https://www.mojeek.com/search?q='; ENG[1] = 'https://www.bing.com/search?q='; } catch (e) {}
-    document.querySelectorAll('.tile').forEach(t => { if (/duckduckgo|bing/i.test(t.dataset.u || '')) { t.dataset.u = 'https://www.mojeek.com'; t.textContent = 'Mojeek'; } });
+    try { ENG[0] = 'https://www.bing.com/search?setmkt=en-US&setlang=en-US&cc=US&q='; ENG[1] = 'https://search.yahoo.com/search?p='; } catch (e) {}
+    document.querySelectorAll('.tile').forEach(t => { if (/duckduckgo|bing|mojeek/i.test(t.dataset.u || '')) { t.dataset.u = 'https://www.bing.com'; t.textContent = 'Bing'; } });
   });
+  if (navigator.serviceWorker) navigator.serviceWorker.addEventListener('message', e => { if (e.data && e.data.swdbg) console.log('[SWDBG]', e.data.note, e.data.dest, e.data.mode, decodeURIComponent(e.data.url).slice(-170)); });
   const load = s => new Promise((res, rej) => { const e = document.createElement('script'); e.src = s; e.onload = res; e.onerror = () => rej(new Error('Failed to load ' + s)); document.head.append(e); });
   async function sw() {
     if (!navigator.serviceWorker) throw new Error('This browser needs HTTPS and service-worker support.');
