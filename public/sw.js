@@ -11,15 +11,18 @@ function blocked(url) {
    Answer the builds.crazygames.com copy with a stub that re-exports the games.crazygames.com copy. */
 function dedupe(req) {
   try {
-    if (req.destination !== 'script') return null;
     const u = new URL(req.url);
     if (!u.pathname.startsWith('/scramjet/')) return null;
     if (u.searchParams.get('$module') !== 'module') return null;
-    if (u.searchParams.get('$io') !== 'https://builds.crazygames.com') return null;
+    const io = u.searchParams.get('$io');
+    if (!io || io === 'https://games.crazygames.com') return null;
     if (!/^https:\/\/builds\.crazygames\.com\/gameframe\//.test(decodeURIComponent(u.pathname.split('/').slice(4).join('/')))) return null;
     u.searchParams.set('$io', 'https://games.crazygames.com');
     return u.href;
   } catch { return null; }
+}
+function dbg(req, note) {
+  self.clients.matchAll({ includeUncontrolled: true }).then(cs => cs.forEach(c => c.postMessage({ swdbg: 1, note, dest: req.destination, mode: req.mode, url: req.url })));
 }
 async function route(event) {
   const response = await $scramjetController.route(event);
@@ -38,6 +41,7 @@ self.addEventListener('fetch', event => {
     return;
   }
   const canon = dedupe(event.request);
+  if (/gameframe/.test(event.request.url)) dbg(event.request, canon ? 'STUB' : 'pass');
   if (canon) {
     event.respondWith(new Response('export * from ' + JSON.stringify(canon) + ';', { status: 200, headers: { 'Content-Type': 'application/javascript', 'Cache-Control': 'no-store', 'Cross-Origin-Resource-Policy': 'cross-origin' } }));
     return;
