@@ -89,7 +89,7 @@ body.min #wm{opacity:.5;transform:none}#wm .bi{width:16px;height:16px;border-rad
 <script src="/bootstrap-init.js"></script>
 <script>
 const $=i=>document.getElementById(i),api=(p,o={})=>fetch("/api/"+p,{credentials:"same-origin",headers:{"Content-Type":"application/json"},...o}),J=b=>({method:"POST",body:JSON.stringify(b)});
-const ENG=["https://html.duckduckgo.com/html/?q=","https://lite.duckduckgo.com/lite/?q="];
+const ENG=["https://html.duckduckgo.com/html/?q=","https://www.bing.com/search?q="];
 const M1="Huh... Lots of people from Cipher are on here. Don’t worry, our servers are working hard. Give us a sec...";
 const M2="Okay. No, we do see your request to enter but there’s just too many people on here that it’s making the server strain. We’re not blaming you but we understand that you could be impatient.";
 let ctl,tabs=[],cur=0,ready,bms=[],L={t:null,start:0,timers:[],retry:null};
@@ -110,7 +110,7 @@ async function diag(){if(!L.t)return;const d=$("ldD");d.style.display="block";d.
 function showErr(t,msg,retry){clearT();const m=String(msg||"Unknown error").replace(/\s+/g," ");ld("err",t.title||host(t.url||""),retry||(()=>{hideLd();if(t.url)go(t,t.url)}));
  $("ldM").textContent="Something got in the way. Here’s what the Cipher server told us.";const d=$("ldD");d.style.display="block";d.innerHTML="";const c=document.createElement("code");c.textContent=short(m,400);d.append(c)}
 function fail(t,msg){t.err=msg;
- if(/SSL|certificate|error code 35|TLS/i.test(msg)&&t.q!=null&&t.ei<ENG.length-1){t.ei++;go(t,ENG[t.ei]+encodeURIComponent(t.q),1);return}
+ if(/SSL|certificate|TLS|error code (6|7|28|35|52|56)|timed out|resolve/i.test(msg)&&t.q!=null&&t.ei<ENG.length-1){t.ei++;go(t,ENG[t.ei]+encodeURIComponent(t.q),1);return}
  if(L.t===t){L.err=msg;const w=60000-(Date.now()-L.start);if(w<=0)showErr(t,msg);else{L.timers.forEach(clearTimeout);L.timers=[setTimeout(()=>{$("ldM").textContent=M1},Math.max(0,45000-(Date.now()-L.start))),setTimeout(()=>showErr(t,msg),w)]}}
  else showErr(t,msg)}
 $("ldB1").onclick=hideLd;$("ldB2").onclick=()=>{const r=L.retry;hideLd();r&&r()};
@@ -170,7 +170,7 @@ function go(t,u,silent){t.url=u;t.title=host(u);t.armed=true;t.err=null;L.err=nu
  t.d0=null;try{t.d0=t.f.contentDocument}catch{}
  t.fr.go(u);api("data/history",J({url:u,title:t.title}));draw();save()}
 function nav(v){const t=tabs[cur];const raw=v.trim();if(!raw)return;let u;
- if(/^https?:\/\//i.test(raw)){u=raw;t.q=null}else if(/^[\w-]+(\.[\w-]+)+(:\d+)?(\/.*)?$/.test(raw)){u="https://"+raw;t.q=null}else{t.q=raw;t.ei=0;api("data/searches",J({query:raw}));u=ENG[0]+encodeURIComponent(raw)}
+ if(/^https?:\/\//i.test(raw)){u=raw;t.q=null}else if(/^[\w-]+(\.[\w-]+)+(:\d+)?(\/.*)?$/.test(raw)){u="https://"+raw;t.q=null}else{t.q=raw;t.ei=0;api("data/searches",J({query:raw}));u=ENG[0]+encodeURIComponent(raw);const tt=t,q0=raw;setTimeout(()=>{if(tt.q===q0&&tt.ei===0&&L.t===tt)fail(tt,"SSL timeout")},12000)}
  go(t,u)}
 const submit=v=>{if(!v.trim())return;if(!tabs.length)openTab("").then(()=>nav(v));else nav(v)};
 /* ---- controls ---- */
